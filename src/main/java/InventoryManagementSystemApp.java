@@ -6,5 +6,4 @@ public class InventoryManagementSystemApp {
 
 	public static void main(String[] args) {
 		mainView.showMenu(mainView);
-	}
 }
