@@ -1,19 +1,30 @@
 package model.impl;
 
+import model.enums.ElectronicsType;
 import model.enums.ItemCategory;
 
 import java.time.LocalDate;
 
 public class ElectronicsItem extends InventoryItem{
+
+	private ElectronicsType electronicsType;
 	private LocalDate dateOfPurchase;
 	private Integer warranty;
 
 	public ElectronicsItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Integer itemQuantity, LocalDate dateOfPurchase, Integer warranty) {
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Integer itemQuantity, LocalDate dateOfPurchase, Integer warranty, ElectronicsType electronicsType) {
 		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemQuantity);
-		setItemCategory(ItemCategory.ELECTRONICS);
 		setDateOfPurchase(dateOfPurchase);
 		setWarranty(warranty);
+		setElectronicsType(electronicsType);
+	}
+
+	public ElectronicsType getElectronicsType() {
+		return electronicsType;
+	}
+
+	public void setElectronicsType(ElectronicsType electronicsType) {
+		this.electronicsType = electronicsType;
 	}
 
 	public LocalDate getDateOfPurchase() {
