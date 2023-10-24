@@ -1,8 +1,9 @@
-import model.enums.ElectronicsType;
+import view.MainView;
 
 public class InventoryManagementSystemApp {
-	public static void main(String[] args) {
-		System.out.println(ElectronicsType.getAll());
-	}
 
+	private static final MainView mainView = new MainView();
+
+	public static void main(String[] args) {
+		mainView.showMenu(mainView);
 }
