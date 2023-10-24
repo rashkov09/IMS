@@ -1,18 +1,20 @@
 package model.impl;
 
-import model.enums.ItemCategory;
+import model.enums.GroceryType;
 
 import java.time.LocalDate;
 
 public class GroceryItem extends InventoryItem{
+
+	private GroceryType groceryType;
 	private LocalDate expirationDate;
 
 	public GroceryItem(
 		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
-		Integer itemQuantity, LocalDate expirationDate) {
+		Integer itemQuantity, LocalDate expirationDate, GroceryType groceryType) {
 		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemQuantity);
-		setItemCategory(ItemCategory.FOOD_GROCERIES);
 		this.expirationDate = expirationDate;
+		this.groceryType = groceryType;
 	}
 
 	public LocalDate getExpirationDate() {
