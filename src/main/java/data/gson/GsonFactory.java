@@ -2,7 +2,7 @@ package data.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import model.iface.Item;
+import model.impl.InventoryItem;
 
 import java.time.LocalDate;
 
@@ -12,8 +12,8 @@ public final class GsonFactory {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
 		gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
-		gsonBuilder.registerTypeAdapter(Item.class, new ItemDeserializer());
-		gsonBuilder.registerTypeAdapter(Item.class, new ItemSerializer());
+		gsonBuilder.registerTypeAdapter(InventoryItem.class, new ItemDeserializer());
+		gsonBuilder.registerTypeAdapter(InventoryItem.class, new ItemSerializer());
 
 
 		return gsonBuilder.create();

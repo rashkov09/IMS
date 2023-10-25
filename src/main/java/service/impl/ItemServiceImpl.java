@@ -4,10 +4,13 @@ import data.ItemData;
 import model.enums.ElectronicsType;
 import model.enums.GroceryType;
 import model.enums.ItemCategory;
+import model.impl.ElectronicsItem;
+import model.impl.GroceryItem;
 import model.impl.InventoryItem;
 import service.ItemService;
 import util.ConsoleRangeReader;
 import util.ConsoleReader;
+import util.DateParser;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -16,6 +19,7 @@ public class ItemServiceImpl implements ItemService {
 	private final static ItemData itemData = new ItemData();
 
 	private static final String ITEM_CATEGORY_CHOICE = "Please, choose item category from the list above:";
+	private static final String ITEM_SUBTYPE_CHOICE = "Please, choose item type from the list above:";
 	private static final String ITEM_INFORMATION_MESSAGE= "Please, enter item information:";
 	private static final List<String> ITEM_COMMON_PARAMS = List.of("name","manufacturer:","country of origin", "description","quantity", "price");
 	private static final String ITEM_PARAM_MESSAGE= "Please, enter item %s:\n";
@@ -27,14 +31,14 @@ public class ItemServiceImpl implements ItemService {
 		System.out.printf(ItemCategory.getAll());
 		int categoryChoice = ConsoleRangeReader.readInt(1,ItemCategory.values().length)-1;
 		System.out.println(ITEM_INFORMATION_MESSAGE);
-		InventoryItem baseItem = getInventoryItem(categoryChoice);
-		if (itemData.addItem(baseItem)){
+
+		if (itemData.addItem(getItem(categoryChoice))){
 			return "Item added successfully!";
 		}
 		return "Item addition failed!";
 	}
 
-	private InventoryItem getInventoryItem(int categoryChoice) {
+	private InventoryItem getItem(int categoryChoice) {
 		String itemName=null;
 		String itemManufacturer=null;
 		String itemCountryOfOrigin=null;
@@ -60,8 +64,26 @@ public class ItemServiceImpl implements ItemService {
 				i--;
 			}
 		}
-
-		return new InventoryItem(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription,category,itemQuantity,itemPrice);
+		switch (categoryChoice){
+			case 0 -> {
+				System.out.println(ElectronicsType.getAll());
+				System.out.println(ITEM_SUBTYPE_CHOICE);
+				int subtype = ConsoleRangeReader.readInt(1,ElectronicsType.values().length)-1;
+				System.out.printf(ITEM_PARAM_MESSAGE,"warranty");
+				int warranty = ConsoleReader.readInt();
+				return new ElectronicsItem(itemName,itemManufacturer,itemCountryOfOrigin,itemDescription,category,itemPrice,itemQuantity,ElectronicsType.values()[subtype],warranty);
+			}
+			case 1 -> {
+				System.out.println(GroceryType.getAll());
+				System.out.println(ITEM_SUBTYPE_CHOICE);
+				int subtype = ConsoleRangeReader.readInt(1,GroceryType.values().length)-1;
+				System.out.println("Please, insert expiration date:");
+				String expirationDate = ConsoleReader.readString();
+				return new GroceryItem(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,itemPrice, itemQuantity, GroceryType.values()[subtype],
+				                       DateParser.parseFromString(expirationDate));
+			}
+			default -> throw new IllegalStateException("Invalid type");
+		}
 	}
 
 	@Override
@@ -84,21 +106,6 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public String searchByName(String name) {
 		return null;
-	}
-
-	private String getSubCategoriesBasedOnBaseCategory(int categoryChoice) {
-		switch (categoryChoice){
-			case 0 -> {
-				return ElectronicsType.getAll();
-			}
-			case 1 -> {
-				return GroceryType.getAll();
-			}
-			// TODO add more cases
-			default -> {
-				return "Wrong subcategory!";
-			}
-		}
 	}
 
 }

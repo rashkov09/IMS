@@ -15,8 +15,20 @@ public class ElectronicsItem extends InventoryItem {
 	public ElectronicsItem(
 		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
 		ItemCategory category,
-		BigDecimal price, Long itemId, Integer itemQuantity) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price, itemId, itemQuantity);
+		BigDecimal price, Integer itemQuantity, ElectronicsType electronicsType, Integer warranty) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, itemQuantity,price);
+		this.electronicsType = electronicsType;
+		this.warranty = warranty;
+	}
+
+	public ElectronicsItem(
+		Long itemId, String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		ItemCategory category,
+		BigDecimal price, Integer itemQuantity, ElectronicsType electronicsType,
+		Integer warranty) {
+		super(itemId,itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price, itemQuantity);
+		this.electronicsType = electronicsType;
+		this.warranty = warranty;
 	}
 
 	public ElectronicsType getElectronicsType() {
@@ -54,5 +66,22 @@ public class ElectronicsItem extends InventoryItem {
 		System.out.println("Warranty is valid to: " + to);
 	}
 
+	@Override
+	public String getItemDetails() {
+		return String.format("""
+                       Item ID: %d
+                       Item name: %s
+                       Manufacturer: %s
+                       Manufactured in: %s
+                       Description: %s
+                       Category: %s
+                       Type: %s
+                       Quantity: %d
+                       Price: %.2f
+                       Warranty: %d
+                     """,this.getItemId(),this.getItemName(),this.getItemManufacturer(),
+		                     this.getItemCountryOfOrigin(),this.getItemDescription(),this.getItemCategory(),this.getElectronicsType().getTypeName()
+			,this.getItemQuantity(),this.getItemPrice(),this.getWarranty());
+	}
 
 }

@@ -11,9 +11,9 @@ public  class InventoryItem extends AbstractItem {
 	private Integer itemQuantity;
 
 	public InventoryItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		Long itemId, String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
 		ItemCategory category,
-		BigDecimal price, Long itemId, Integer itemQuantity) {
+		BigDecimal price, Integer itemQuantity) {
 		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price);
 		this.itemId = itemId;
 		this.itemQuantity = itemQuantity;
@@ -37,6 +37,10 @@ public  class InventoryItem extends AbstractItem {
 		long min = 0;
 		long max = Long.MAX_VALUE;
 		this.itemId = random.nextLong(min, max);
+	}
+
+	public void setItemId(Long id){
+		this.itemId = id;
 	}
 
 	public Integer getItemQuantity() {
