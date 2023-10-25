@@ -16,18 +16,19 @@ public abstract class AbstractItem implements Item, Sellable, Categorizable, Bre
 	private String itemCountryOfOrigin;
 	private String itemDescription;
 	private ItemCategory itemCategory;
-
 	private BigDecimal itemPrice;
 
 	public AbstractItem() {
 	}
 
 	public AbstractItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription) {
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, ItemCategory category, BigDecimal price) {
 		this.itemName = itemName;
 		this.itemManufacturer = itemManufacturer;
 		this.itemCountryOfOrigin = itemCountryOfOrigin;
 		this.itemDescription = itemDescription;
+		this.itemCategory = category;
+		this.itemPrice = price;
 	}
 
 	public String getItemName() {

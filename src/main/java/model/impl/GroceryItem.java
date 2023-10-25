@@ -1,7 +1,9 @@
 package model.impl;
 
 import model.enums.GroceryType;
+import model.enums.ItemCategory;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class GroceryItem extends InventoryItem{
@@ -11,16 +13,15 @@ public class GroceryItem extends InventoryItem{
 
 	public GroceryItem(
 		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
-		Integer itemQuantity, LocalDate expirationDate, GroceryType groceryType) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemQuantity);
-		this.expirationDate = expirationDate;
-		this.groceryType = groceryType;
+		ItemCategory category, Integer quantity, BigDecimal price) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, quantity, price);
 	}
 
 	public GroceryItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Long itemId,
-		Integer itemQuantity, GroceryType groceryType, LocalDate expirationDate) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemId, itemQuantity);
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		ItemCategory category,
+		BigDecimal price, Long itemId, Integer itemQuantity, GroceryType groceryType, LocalDate expirationDate) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price, itemId, itemQuantity);
 		this.groceryType = groceryType;
 		this.expirationDate = expirationDate;
 	}

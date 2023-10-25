@@ -1,10 +1,9 @@
 package model.enums;
 
 public enum ItemCategory {
-	NOT_CATEGORIZED("Item does not have a category"),
 	ELECTRONICS("Electronics"),
-	CLOTHING_APPAREL("Clothing and Apparel"),
 	FOOD_GROCERIES("Food and Groceries"),
+	CLOTHING_APPAREL("Clothing and Apparel"),
 	FURNITURE("Furniture"),
 	AUTOMOTIVE_PARTS("Automotive Parts"),
 	BOOKS_MEDIA("Books and Media"),
@@ -31,5 +30,13 @@ public enum ItemCategory {
 	@Override
 	public String toString() {
 		return categoryName;
+	}
+
+	public static String getAll() {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < ItemCategory.values().length; i++) {
+			builder.append(i+1).append(". ").append(ItemCategory.values()[i]).append(System.lineSeparator());
+		}
+		return builder.toString();
 	}
 }

@@ -3,30 +3,20 @@ package model.impl;
 import model.enums.ElectronicsType;
 import model.enums.ItemCategory;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class ElectronicsItem extends InventoryItem{
+public class ElectronicsItem extends InventoryItem {
 
 	private ElectronicsType electronicsType;
 	private LocalDate dateOfPurchase;
 	private Integer warranty;
 
 	public ElectronicsItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Long itemId,
-		Integer itemQuantity, ElectronicsType electronicsType, LocalDate dateOfPurchase, Integer warranty) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemId, itemQuantity);
-		this.electronicsType = electronicsType;
-		this.dateOfPurchase = dateOfPurchase;
-		this.warranty = warranty;
-	}
-
-	public ElectronicsItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Integer itemQuantity,
-		ElectronicsType electronicsType, LocalDate dateOfPurchase, Integer warranty) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemQuantity);
-		this.electronicsType = electronicsType;
-		this.dateOfPurchase = dateOfPurchase;
-		this.warranty = warranty;
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		ItemCategory category,
+		BigDecimal price, Long itemId, Integer itemQuantity) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price, itemId, itemQuantity);
 	}
 
 	public ElectronicsType getElectronicsType() {

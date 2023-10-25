@@ -3,6 +3,7 @@ package model.impl;
 import model.AbstractItem;
 import model.enums.ItemCategory;
 
+import java.math.BigDecimal;
 import java.util.Random;
 
 public  class InventoryItem extends AbstractItem {
@@ -10,19 +11,21 @@ public  class InventoryItem extends AbstractItem {
 	private Integer itemQuantity;
 
 	public InventoryItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Long itemId,
-		Integer itemQuantity) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription);
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		ItemCategory category,
+		BigDecimal price, Long itemId, Integer itemQuantity) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price);
 		this.itemId = itemId;
 		this.itemQuantity = itemQuantity;
 	}
 
 	public InventoryItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Integer itemQuantity) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription);
-		super.setItemCategory(ItemCategory.NOT_CATEGORIZED);
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		ItemCategory category, Integer quantity,
+		BigDecimal price) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price);
 		setItemId();
-		setItemQuantity(itemQuantity);
+		this.itemQuantity = quantity;
 	}
 
 	public Long getItemId() {
@@ -34,10 +37,6 @@ public  class InventoryItem extends AbstractItem {
 		long min = 0;
 		long max = Long.MAX_VALUE;
 		this.itemId = random.nextLong(min, max);
-	}
-
-	public void setItemId(Long itemId) {
-		this.itemId = itemId;
 	}
 
 	public Integer getItemQuantity() {
@@ -56,8 +55,10 @@ public  class InventoryItem extends AbstractItem {
                        Manufacturer: %s
                        Manufactured in: %s
                        Description: %s
+                       Category: %s
                        Quantity: %d
-		                     """,this.getItemId(),this.getItemName(),this.getItemManufacturer(),
-		                     this.getItemCountryOfOrigin(),this.getItemDescription(),this.getItemQuantity());
+                       Price: %.2f
+                     """,this.getItemId(),this.getItemName(),this.getItemManufacturer(),
+		                     this.getItemCountryOfOrigin(),this.getItemDescription(),this.getItemCategory(),this.getItemQuantity(),this.getItemPrice());
 	}
 }
