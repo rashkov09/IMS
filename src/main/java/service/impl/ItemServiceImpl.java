@@ -1,13 +1,16 @@
 package service.impl;
 
+import data.ItemData;
 import model.iface.Item;
+import model.impl.InventoryItem;
 import service.ItemService;
 
 public class ItemServiceImpl implements ItemService {
+	private final static ItemData itemData = new ItemData();
 
 	@Override
 	public String addItem() {
-		return null;
+		return  null;
 	}
 
 	@Override
@@ -17,7 +20,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public String displayAllItems() {
-		return null;
+		StringBuilder builder = new StringBuilder();
+		itemData.getAllItems().forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()) );
+		return builder.toString();
 	}
 
 	@Override
