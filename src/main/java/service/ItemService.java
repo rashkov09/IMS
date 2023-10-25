@@ -7,6 +7,8 @@ public interface ItemService {
 
 	String displayAllItems();
 
-	String searchById(long itemId);
-	String searchByName(String itemId);
+	String searchById();
+	String searchByName();
+
+	String searchByType();
 }

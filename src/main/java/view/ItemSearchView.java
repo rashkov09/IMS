@@ -17,7 +17,7 @@ public class ItemSearchView implements ConsoleView{
 	                                                                                  
 	                                         1. Search item by ID
 	                                         2. Search item by name
-	                                         3. Search item by type
+	                                         3. Search item by category
 	                                         
 	                                                                                  
 	                                         0. Back
@@ -29,17 +29,15 @@ public class ItemSearchView implements ConsoleView{
 		int choice = ConsoleRangeReader.readInt(MIN_CHOICE, MAX_CHOICE);
 		switch (choice) {
 			case 1 -> {
-				long itemId = ConsoleReader.readInt();
-				System.out.println(itemService.searchById(itemId));
+				System.out.println(itemService.searchById());
 				this.showMenu(invoker);
 			}
 			case 2 -> {
-				String param = ConsoleReader.readString();
-				System.out.println(itemService.searchByName(param));
+				System.out.println(itemService.searchByName());
 				this.showMenu(invoker);
 			}
 			case 3 -> {
-				// TODO decide how to search by type
+				System.out.println(itemService.searchByType());
 				this.showMenu(invoker);
 			}
 			case 0 -> invoker.showMenu(new MainView());

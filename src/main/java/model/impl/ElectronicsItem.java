@@ -3,29 +3,31 @@ package model.impl;
 import model.enums.ElectronicsType;
 import model.enums.ItemCategory;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class ElectronicsItem extends InventoryItem{
+public class ElectronicsItem extends InventoryItem {
 
 	private ElectronicsType electronicsType;
 	private LocalDate dateOfPurchase;
 	private Integer warranty;
 
 	public ElectronicsItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Long itemId,
-		Integer itemQuantity, ElectronicsType electronicsType, LocalDate dateOfPurchase, Integer warranty) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemId, itemQuantity);
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		ItemCategory category,
+		BigDecimal price, Integer itemQuantity, ElectronicsType electronicsType, Integer warranty) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, itemQuantity,price);
 		this.electronicsType = electronicsType;
-		this.dateOfPurchase = dateOfPurchase;
 		this.warranty = warranty;
 	}
 
 	public ElectronicsItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Integer itemQuantity,
-		ElectronicsType electronicsType, LocalDate dateOfPurchase, Integer warranty) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemQuantity);
+		Long itemId, String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
+		ItemCategory category,
+		BigDecimal price, Integer itemQuantity, ElectronicsType electronicsType,
+		Integer warranty) {
+		super(itemId,itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price, itemQuantity);
 		this.electronicsType = electronicsType;
-		this.dateOfPurchase = dateOfPurchase;
 		this.warranty = warranty;
 	}
 
@@ -64,5 +66,22 @@ public class ElectronicsItem extends InventoryItem{
 		System.out.println("Warranty is valid to: " + to);
 	}
 
+	@Override
+	public String getItemDetails() {
+		return String.format("""
+                       Item ID: %d
+                       Item name: %s
+                       Manufacturer: %s
+                       Manufactured in: %s
+                       Description: %s
+                       Category: %s
+                       Type: %s
+                       Quantity: %d
+                       Price: %.2f
+                       Warranty: %d
+                     """,this.getItemId(),this.getItemName(),this.getItemManufacturer(),
+		                     this.getItemCountryOfOrigin(),this.getItemDescription(),this.getItemCategory(),this.getElectronicsType().getTypeName()
+			,this.getItemQuantity(),this.getItemPrice(),this.getWarranty());
+	}
 
 }

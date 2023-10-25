@@ -25,6 +25,15 @@ public final class ConsoleReader {
 		scanner.nextLine();
 		return input;
 	}
+	public static Long readILong() {
+		while (!scanner.hasNextLong()) {
+			String input = scanner.next();
+			System.out.printf(INVALID_INT, input);
+		}
+		long input = scanner.nextLong();
+		scanner.nextLine();
+		return input;
+	}
 	public static BigDecimal readBigDecimal() {
 		while (!scanner.hasNextBigDecimal()) {
 			String input = scanner.next();
