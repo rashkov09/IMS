@@ -19,6 +19,9 @@ public abstract class AbstractItem implements Item, Sellable, Categorizable, Bre
 
 	private BigDecimal itemPrice;
 
+	public AbstractItem() {
+	}
+
 	public AbstractItem(
 		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription) {
 		this.itemName = itemName;

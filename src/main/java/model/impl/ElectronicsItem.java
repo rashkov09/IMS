@@ -12,11 +12,21 @@ public class ElectronicsItem extends InventoryItem{
 	private Integer warranty;
 
 	public ElectronicsItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Integer itemQuantity, LocalDate dateOfPurchase, Integer warranty, ElectronicsType electronicsType) {
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Long itemId,
+		Integer itemQuantity, ElectronicsType electronicsType, LocalDate dateOfPurchase, Integer warranty) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemId, itemQuantity);
+		this.electronicsType = electronicsType;
+		this.dateOfPurchase = dateOfPurchase;
+		this.warranty = warranty;
+	}
+
+	public ElectronicsItem(
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Integer itemQuantity,
+		ElectronicsType electronicsType, LocalDate dateOfPurchase, Integer warranty) {
 		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemQuantity);
-		setDateOfPurchase(dateOfPurchase);
-		setWarranty(warranty);
-		setElectronicsType(electronicsType);
+		this.electronicsType = electronicsType;
+		this.dateOfPurchase = dateOfPurchase;
+		this.warranty = warranty;
 	}
 
 	public ElectronicsType getElectronicsType() {
