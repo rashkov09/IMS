@@ -17,6 +17,14 @@ public class GroceryItem extends InventoryItem{
 		this.groceryType = groceryType;
 	}
 
+	public GroceryItem(
+		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription, Long itemId,
+		Integer itemQuantity, GroceryType groceryType, LocalDate expirationDate) {
+		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, itemId, itemQuantity);
+		this.groceryType = groceryType;
+		this.expirationDate = expirationDate;
+	}
+
 	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
