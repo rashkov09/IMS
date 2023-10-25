@@ -4,6 +4,7 @@ import data.ItemData;
 import model.enums.ElectronicsType;
 import model.enums.GroceryType;
 import model.enums.ItemCategory;
+import model.iface.Item;
 import model.impl.ElectronicsItem;
 import model.impl.GroceryItem;
 import model.impl.InventoryItem;
@@ -104,8 +105,11 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public String searchById(long itemId) {
-		return null;
+	public String searchById() {
+		System.out.printf(ITEM_PARAM_MESSAGE,"ID");
+		long itemId = ConsoleReader.readILong();
+		Item item  = itemData.getItemById(itemId);
+		return item == null ? String.format("Item with ID %d not found!",itemId) : item.getItemDetails();
 	}
 
 	@Override

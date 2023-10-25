@@ -29,8 +29,7 @@ public class ItemSearchView implements ConsoleView{
 		int choice = ConsoleRangeReader.readInt(MIN_CHOICE, MAX_CHOICE);
 		switch (choice) {
 			case 1 -> {
-				long itemId = ConsoleReader.readInt();
-				System.out.println(itemService.searchById(itemId));
+				System.out.println(itemService.searchById());
 				this.showMenu(invoker);
 			}
 			case 2 -> {

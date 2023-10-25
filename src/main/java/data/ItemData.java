@@ -33,5 +33,9 @@ public class ItemData {
 		}
 		return false;
 	}
+
+	public Item getItemById(long itemId) {
+		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemId().equals(itemId)).findFirst().orElse(null);
+	}
 }
 
