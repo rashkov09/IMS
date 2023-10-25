@@ -31,7 +31,7 @@ public enum GroceryType {
 	public static String getAll() {
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < GroceryType.values().length; i++) {
-			builder.append(i+1).append(". ").append(ElectronicsType.values()[i]).append(System.lineSeparator());
+			builder.append(i+1).append(". ").append(GroceryType.values()[i]).append(System.lineSeparator());
 		}
 		return builder.toString();
 	}
