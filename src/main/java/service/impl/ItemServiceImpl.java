@@ -113,8 +113,13 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public String searchByName(String name) {
-		return null;
+	public String searchByName() {
+		System.out.printf(ITEM_PARAM_MESSAGE,"name or part of it");
+		String param = ConsoleReader.readString();
+		List<Item> searchResult = itemData.getItemsByName(param);
+		StringBuilder builder = new StringBuilder();
+		searchResult.forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()));
+		return builder.isEmpty() ? String.format("No item name contains %s",param) : builder.toString();
 	}
 
 }

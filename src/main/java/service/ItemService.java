@@ -8,5 +8,5 @@ public interface ItemService {
 	String displayAllItems();
 
 	String searchById();
-	String searchByName(String itemId);
+	String searchByName();
 }

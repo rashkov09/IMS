@@ -5,6 +5,7 @@ import model.iface.Item;
 import model.impl.InventoryItem;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static constant.Shared.ITEM_FILE_PATH;
 
@@ -36,6 +37,11 @@ public class ItemData {
 
 	public Item getItemById(long itemId) {
 		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemId().equals(itemId)).findFirst().orElse(null);
+	}
+
+	public List<Item> getItemsByName(String param) {
+		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemName().toLowerCase().contains(param.toLowerCase())).collect(
+			Collectors.toList());
 	}
 }
 

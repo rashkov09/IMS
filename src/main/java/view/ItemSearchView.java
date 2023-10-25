@@ -33,8 +33,7 @@ public class ItemSearchView implements ConsoleView{
 				this.showMenu(invoker);
 			}
 			case 2 -> {
-				String param = ConsoleReader.readString();
-				System.out.println(itemService.searchByName(param));
+				System.out.println(itemService.searchByName());
 				this.showMenu(invoker);
 			}
 			case 3 -> {
