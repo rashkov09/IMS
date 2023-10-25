@@ -88,14 +88,19 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public String removeItem() {
-		return null;
+		System.out.printf(ITEM_PARAM_MESSAGE,"ID");
+		Long itemId = ConsoleReader.readILong();
+		if (itemData.removeItem(itemId)){
+			return String.format("Item with ID %d removed successfully!",itemId);
+		}
+		return String.format("Item with ID %d not found!",itemId);
 	}
 
 	@Override
 	public String displayAllItems() {
 		StringBuilder builder = new StringBuilder();
 		itemData.getAllItems().forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()) );
-		return builder.toString();
+		return builder.toString().isEmpty() ? "No items found!\n" : builder.toString();
 	}
 
 	@Override

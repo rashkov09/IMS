@@ -23,4 +23,15 @@ public class ItemData {
 		return itemPersistenceUnit.fetchAll(new TypeToken<>() {
 		});
 	}
+
+	public boolean removeItem(Long itemId) {
+		List<InventoryItem> items = itemPersistenceUnit.fetchAll(new TypeToken<>() {
+		});
+		if (items.removeIf(inventoryItem -> inventoryItem.getItemId().equals(itemId))) {
+			itemPersistenceUnit.save(items);
+			return true;
+		}
+		return false;
+	}
 }
+
