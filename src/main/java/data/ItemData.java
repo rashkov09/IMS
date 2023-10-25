@@ -1,9 +1,14 @@
 package data;
 
 import com.google.gson.reflect.TypeToken;
+import model.enums.ElectronicsType;
+import model.enums.ItemCategory;
 import model.iface.Item;
+import model.impl.ElectronicsItem;
+import model.impl.GroceryItem;
 import model.impl.InventoryItem;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,12 +41,39 @@ public class ItemData {
 	}
 
 	public Item getItemById(long itemId) {
-		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemId().equals(itemId)).findFirst().orElse(null);
+		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemId().equals(itemId)).findFirst()
+		           .orElse(null);
 	}
 
 	public List<Item> getItemsByName(String param) {
-		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemName().toLowerCase().contains(param.toLowerCase())).collect(
-			Collectors.toList());
+		return this.getAllItems().stream()
+		           .filter(inventoryItem -> inventoryItem.getItemName().toLowerCase().contains(param.toLowerCase()))
+		           .collect(
+			           Collectors.toList());
+	}
+
+	public List<Item> getItemsByCategory(String categoryName) {
+		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemCategory().equals(categoryName))
+		           .collect(
+			           Collectors.toList());
+	}
+
+	public List<Item> getItemsByCategoryAndType(ItemCategory category, String typeName) {
+		switch (category) {
+			case ELECTRONICS -> {
+				return this.getItemsByCategory(category.getCategoryName()).stream().map(item -> (ElectronicsItem) item)
+				           .filter(item -> item.getElectronicsType().getTypeName().equals(typeName)).collect(
+						Collectors.toList());
+			}
+			case FOOD_GROCERIES -> {
+				return this.getItemsByCategory(category.getCategoryName()).stream().map(item -> (GroceryItem) item)
+				           .filter(item -> item.getGroceryType().getTypeName().equals(typeName)).collect(
+						Collectors.toList());
+			}
+			default -> {
+				return new ArrayList<>();
+			}
+		}
 	}
 }
 

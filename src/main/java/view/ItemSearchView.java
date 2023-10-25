@@ -17,7 +17,7 @@ public class ItemSearchView implements ConsoleView{
 	                                                                                  
 	                                         1. Search item by ID
 	                                         2. Search item by name
-	                                         3. Search item by type
+	                                         3. Search item by category
 	                                         
 	                                                                                  
 	                                         0. Back
@@ -37,7 +37,7 @@ public class ItemSearchView implements ConsoleView{
 				this.showMenu(invoker);
 			}
 			case 3 -> {
-				// TODO decide how to search by type
+				System.out.println(itemService.searchByType());
 				this.showMenu(invoker);
 			}
 			case 0 -> invoker.showMenu(new MainView());

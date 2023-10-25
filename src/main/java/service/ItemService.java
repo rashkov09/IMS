@@ -9,4 +9,6 @@ public interface ItemService {
 
 	String searchById();
 	String searchByName();
+
+	String searchByType();
 }

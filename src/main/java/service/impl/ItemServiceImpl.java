@@ -116,10 +116,52 @@ public class ItemServiceImpl implements ItemService {
 	public String searchByName() {
 		System.out.printf(ITEM_PARAM_MESSAGE,"name or part of it");
 		String param = ConsoleReader.readString();
-		List<Item> searchResult = itemData.getItemsByName(param);
-		StringBuilder builder = new StringBuilder();
-		searchResult.forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()));
-		return builder.isEmpty() ? String.format("No item name contains %s",param) : builder.toString();
+		String data = getFilteredDataAsString(itemData.getItemsByName(param));
+		return data.isEmpty() ? String.format("No item name contains %s",param) : data;
 	}
 
+	@Override
+	public String searchByType() {
+		System.out.printf(ItemCategory.getAll());
+		System.out.println(ITEM_CATEGORY_CHOICE);
+		int categoryChoice = ConsoleRangeReader.readInt(1,ItemCategory.values().length)-1;
+		ItemCategory itemCategory= ItemCategory.values()[categoryChoice];
+		System.out.println("Do you wish to list all or choose a subtype? (y/n)");
+		String all = ConsoleReader.readString();
+		String data = "";
+		switch (all.toLowerCase()){
+			case "y" -> {
+				data = getFilteredDataAsString(itemData.getItemsByCategory(itemCategory.getCategoryName()));
+				return data.isEmpty() ? "No items in this category!" : data;
+			}
+			case "n" -> {
+				switch (itemCategory) {
+					case ELECTRONICS -> {
+						System.out.println(ElectronicsType.getAll());
+						System.out.println(ITEM_SUBTYPE_CHOICE);
+						int type = ConsoleRangeReader.readInt(1, ElectronicsType.values().length) - 1;
+						ElectronicsType electronicsType = ElectronicsType.values()[type];
+						data = getFilteredDataAsString(itemData.getItemsByCategoryAndType(itemCategory,electronicsType.getTypeName()));
+					}
+					case FOOD_GROCERIES -> {
+						System.out.println(GroceryType.getAll());
+						System.out.println(ITEM_SUBTYPE_CHOICE);
+						int type = ConsoleRangeReader.readInt(1, GroceryType.values().length) - 1;
+						GroceryType groceryType = GroceryType.values()[type];
+						data = getFilteredDataAsString(itemData.getItemsByCategoryAndType(itemCategory,groceryType.getTypeName()));
+					}
+				}
+				return data.isEmpty() ? "No items in this category and with this type!\n" : data;
+			}
+			default -> {
+				return "Invalid input!";
+			}
+		}
+	}
+
+	private String getFilteredDataAsString(List<Item> filteredItems) {
+		StringBuilder builder = new StringBuilder();
+		filteredItems.forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()));
+		return builder.toString();
+	}
 }
