@@ -4,7 +4,9 @@ public enum ItemCategory {
 	ELECTRONICS("Electronics"),
 	FOOD_GROCERIES("Food and Groceries"),
 	CLOTHING_APPAREL("Clothing and Apparel"),
-	FURNITURE("Furniture"),
+	FURNITURE("Furniture");
+
+	/*  <- For future development ->
 	AUTOMOTIVE_PARTS("Automotive Parts"),
 	BOOKS_MEDIA("Books and Media"),
 	TOYS_GAMES("Toys and Games"),
@@ -16,11 +18,20 @@ public enum ItemCategory {
 	PET_SUPPLIES("Pet Supplies"),
 	ELECTRICAL_COMPONENTS("Electrical Components"),
 	MEDICAL_SUPPLIES("Medical Supplies");
+	*/
 
-	private  String categoryName;
+	private final String categoryName;
 
 	ItemCategory(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public static String getAll() {
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < ItemCategory.values().length; i++) {
+			builder.append(i + 1).append(". ").append(ItemCategory.values()[i]).append(System.lineSeparator());
+		}
+		return builder.toString();
 	}
 
 	public String getCategoryName() {
@@ -31,12 +42,4 @@ public enum ItemCategory {
 	public String toString() {
 		return categoryName;
 	}
-
-	public static String getAll() {
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < ItemCategory.values().length; i++) {
-			builder.append(i+1).append(". ").append(ItemCategory.values()[i]).append(System.lineSeparator());
-		}
-		return builder.toString();
 	}
-}
