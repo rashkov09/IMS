@@ -174,6 +174,14 @@ public class ItemServiceImpl implements ItemService {
 						data = getFilteredDataAsString(itemData.getItemsByCategoryAndType(itemCategory,
 						                                                                  groceryType.getTypeName()));
 					}
+					case CLOTHING_APPAREL -> {
+						System.out.println(ClothingType.getAll());
+						System.out.println(ITEM_SUBTYPE_CHOICE);
+						int type = ConsoleRangeReader.readInt(1, ClothingType.values().length) - 1;
+						ClothingType clothingType = ClothingType.values()[type];
+						data = getFilteredDataAsString(itemData.getItemsByCategoryAndType(itemCategory,
+						                                                                  clothingType.getTypeName()));
+					}
 				}
 				return data.isEmpty() ? "No items in this category and with this type!\n" : data;
 			}

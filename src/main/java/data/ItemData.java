@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import model.enums.ElectronicsType;
 import model.enums.ItemCategory;
 import model.iface.Item;
+import model.impl.ClothingItem;
 import model.impl.ElectronicsItem;
 import model.impl.GroceryItem;
 import model.impl.InventoryItem;
@@ -68,6 +69,11 @@ public class ItemData {
 			case FOOD_GROCERIES -> {
 				return this.getItemsByCategory(category.getCategoryName()).stream().map(item -> (GroceryItem) item)
 				           .filter(item -> item.getGroceryType().getTypeName().equals(typeName)).collect(
+						Collectors.toList());
+			}
+			case CLOTHING_APPAREL -> {
+				return this.getItemsByCategory(category.getCategoryName()).stream().map(item -> (ClothingItem) item)
+				           .filter(item -> item.getClothingType().getTypeName().equals(typeName)).collect(
 						Collectors.toList());
 			}
 			default -> {
