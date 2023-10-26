@@ -22,5 +22,44 @@
     "itemDescription": "Ice-cream cake with fruit topping and marshmellows",
     "itemCategory": "FOOD_GROCERIES",
     "itemPrice": 25.0
+  },
+  {
+    "clothingType": "JACKET",
+    "clothingSexCategory": "MEN",
+    "clothingSize": "M",
+    "itemId": 1580683132515325060,
+    "itemQuantity": 6,
+    "itemName": "Winter Warrior",
+    "itemManufacturer": "Zara",
+    "itemCountryOfOrigin": "Bulgaria",
+    "itemDescription": "Wind proof, water proof, 100% leather",
+    "itemCategory": "CLOTHING_APPAREL",
+    "itemPrice": 329.99
+  },
+  {
+    "clothingType": "SHOES",
+    "clothingSexCategory": "MEN",
+    "clothingSize": "L",
+    "itemId": 4190684648767759407,
+    "itemQuantity": 7,
+    "itemName": "Winter Warrior Boots",
+    "itemManufacturer": "Zara",
+    "itemCountryOfOrigin": "Bulgaria",
+    "itemDescription": "Winter boots, water proof, 100% leather",
+    "itemCategory": "CLOTHING_APPAREL",
+    "itemPrice": 199.99
+  },
+  {
+    "clothingType": "SOCKS",
+    "clothingSexCategory": "MEN",
+    "clothingSize": "M",
+    "itemId": 7525992247527383372,
+    "itemQuantity": 100,
+    "itemName": "Warrior socks",
+    "itemManufacturer": "Zara",
+    "itemCountryOfOrigin": "Bulgaria",
+    "itemDescription": "100% wool socks",
+    "itemCategory": "CLOTHING_APPAREL",
+    "itemPrice": 3.99
   }
 ]
