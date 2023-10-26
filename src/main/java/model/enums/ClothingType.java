@@ -12,7 +12,7 @@ public enum ClothingType {
 	ACCESSORY("Accessory"),
 	OTHER("Other");
 
-	private String type;
+	private final String type;
 
 	ClothingType(String type) {
 		this.type = type;

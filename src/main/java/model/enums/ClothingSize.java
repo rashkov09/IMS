@@ -9,7 +9,7 @@ public enum ClothingSize {
 	XXL("Double Extra Large"),
 	XXXL("Triple Extra Large");
 
-	private String sizeName;
+	private final String sizeName;
 
 	ClothingSize(String sizeName) {
 		this.sizeName = sizeName;

@@ -5,7 +5,7 @@ public enum ClothingSexCategory {
 	WOMEN("Women's Clothing"),
 	CHILDREN("Children's Clothing");
 
-	private String category;
+	private final String category;
 
 	ClothingSexCategory(String category) {
 		this.category = category;

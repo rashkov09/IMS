@@ -13,7 +13,7 @@ public enum FurnitureType {
 	COFFEE_TABLES("Coffee Tables"),
 	OTHER("Other Furniture");
 
-	private String type;
+	private final String type;
 
 	FurnitureType(String type) {
 		this.type = type;

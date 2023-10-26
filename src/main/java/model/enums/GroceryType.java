@@ -13,7 +13,7 @@ public enum GroceryType {
 	NON_ALCOHOLIC("Non-Alcoholic Beverages"),
 	ALCOHOLIC("Alcoholic Beverages");
 
-	private String type;
+	private final String type;
 
 	GroceryType(String type) {
 		this.type = type;
