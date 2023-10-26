@@ -1,1 +1,26 @@
-[{"electronicsType":"SMARTPHONE","warranty":3,"itemId":4468828922421874623,"itemQuantity":4,"itemName":"Lenovo P3","itemManufacturer":"Lenovo","itemCountryOfOrigin":"Austria","itemDescription":"Very good smartphone","itemCategory":"ELECTRONICS","itemPrice":1222.33}]
+[
+  {
+    "electronicsType": "SMARTPHONE",
+    "warranty": 5,
+    "itemId": 778678859246540295,
+    "itemQuantity": 4,
+    "itemName": "Samsung Galaxy A1",
+    "itemManufacturer": "Samsung",
+    "itemCountryOfOrigin": "China",
+    "itemDescription": "Newest samsung smartphone",
+    "itemCategory": "ELECTRONICS",
+    "itemPrice": 3000.333
+  },
+  {
+    "groceryType": "FROZEN_FOODS",
+    "expirationDate": "2023-10-27",
+    "itemId": 6503391623080955191,
+    "itemQuantity": 10,
+    "itemName": "Sunrise price",
+    "itemManufacturer": "Sunrise CO.",
+    "itemCountryOfOrigin": "Romania",
+    "itemDescription": "Ice-cream cake with fruit topping and marshmellows",
+    "itemCategory": "FOOD_GROCERIES",
+    "itemPrice": 25.0
+  }
+]

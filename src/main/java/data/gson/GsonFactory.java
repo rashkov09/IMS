@@ -14,6 +14,7 @@ public final class GsonFactory {
 		gsonBuilder.registerTypeAdapter(LocalDate.class, new LocalDateDeserializer());
 		gsonBuilder.registerTypeAdapter(InventoryItem.class, new ItemDeserializer());
 		gsonBuilder.registerTypeAdapter(InventoryItem.class, new ItemSerializer());
+		gsonBuilder.setPrettyPrinting();
 
 
 		return gsonBuilder.create();
