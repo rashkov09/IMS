@@ -6,6 +6,7 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import model.impl.ClothingItem;
 import model.impl.ElectronicsItem;
+import model.impl.FurnitureItem;
 import model.impl.GroceryItem;
 import model.impl.InventoryItem;
 
@@ -35,6 +36,9 @@ public class ItemSerializer implements JsonSerializer<InventoryItem> {
 			itemJson.addProperty("clothingType",clothingItem.getClothingType().getTypeName());
 			itemJson.addProperty("clothingSexCategory",((ClothingItem) item).getClothingSexCategory().getCategoryName());
 			itemJson.addProperty("clothingSize",((ClothingItem) item).getClothingSize().getSizeName());
+		} else if (item instanceof FurnitureItem furnitureItem) {
+			itemJson.addProperty("furnitureType",furnitureItem.getFurnitureType().getTypeName());
+			itemJson.addProperty("deliveryPrice",furnitureItem.getDeliveryPrice());
 		}
 		return itemJson;
 	}

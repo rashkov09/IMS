@@ -5,11 +5,13 @@ import model.enums.ClothingSexCategory;
 import model.enums.ClothingSize;
 import model.enums.ClothingType;
 import model.enums.ElectronicsType;
+import model.enums.FurnitureType;
 import model.enums.GroceryType;
 import model.enums.ItemCategory;
 import model.iface.Item;
 import model.impl.ClothingItem;
 import model.impl.ElectronicsItem;
+import model.impl.FurnitureItem;
 import model.impl.GroceryItem;
 import model.impl.InventoryItem;
 import service.ItemService;
@@ -105,6 +107,15 @@ public class ItemServiceImpl implements ItemService {
 				                        itemQuantity, itemPrice, ClothingType.values()[subtype],
 				                        ClothingSexCategory.values()[sexCategory], ClothingSize.values()[clothingSize]);
 			}
+			case 3 -> {
+				System.out.println(FurnitureType.getAll());
+				System.out.println(ITEM_SUBTYPE_CHOICE);
+				int subtype = ConsoleRangeReader.readInt(1, FurnitureType.values().length) - 1;
+				System.out.println("Please, enter delivery price for furniture item:");
+				BigDecimal deliveryPrice = ConsoleReader.readBigDecimal();
+				return new FurnitureItem(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
+				                         itemQuantity, itemPrice, FurnitureType.values()[subtype], deliveryPrice);
+			}
 			default -> throw new IllegalStateException("Invalid type");
 		}
 	}
@@ -181,6 +192,14 @@ public class ItemServiceImpl implements ItemService {
 						ClothingType clothingType = ClothingType.values()[type];
 						data = getFilteredDataAsString(itemData.getItemsByCategoryAndType(itemCategory,
 						                                                                  clothingType.getTypeName()));
+					}
+					case FURNITURE -> {
+						System.out.println(FurnitureType.getAll());
+						System.out.println(ITEM_SUBTYPE_CHOICE);
+						int type = ConsoleRangeReader.readInt(1, FurnitureType.values().length) - 1;
+						FurnitureType furnitureType = FurnitureType.values()[type];
+						data =
+							getFilteredDataAsString(itemData.getItemsByCategoryAndType(itemCategory, furnitureType.getTypeName()));
 					}
 				}
 				return data.isEmpty() ? "No items in this category and with this type!\n" : data;

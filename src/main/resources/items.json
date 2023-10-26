@@ -61,5 +61,29 @@
     "itemDescription": "100% wool socks",
     "itemCategory": "CLOTHING_APPAREL",
     "itemPrice": 3.99
+  },
+  {
+    "furnitureType": "SOFAS",
+    "deliveryPrice": 59.99,
+    "itemId": 4787216821244119765,
+    "itemQuantity": 6,
+    "itemName": "Dreams in",
+    "itemManufacturer": "Borsa LTD",
+    "itemCountryOfOrigin": "Romania",
+    "itemDescription": "The most comfortable sofa ever!",
+    "itemCategory": "FURNITURE",
+    "itemPrice": 4555.96
+  },
+  {
+    "furnitureType": "TABLES",
+    "deliveryPrice": 199.99,
+    "itemId": 168565073248055512,
+    "itemQuantity": 7,
+    "itemName": "Diamond Table",
+    "itemManufacturer": "Toros LTD.",
+    "itemCountryOfOrigin": "Spain",
+    "itemDescription": "Most stable table ever!",
+    "itemCategory": "FURNITURE",
+    "itemPrice": 5000.99
   }
 ]
