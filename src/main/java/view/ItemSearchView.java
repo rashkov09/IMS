@@ -3,7 +3,6 @@ package view;
 import service.ItemService;
 import service.impl.ItemServiceImpl;
 import util.ConsoleRangeReader;
-import util.ConsoleReader;
 
 public class ItemSearchView implements ConsoleView{
 
@@ -40,7 +39,7 @@ public class ItemSearchView implements ConsoleView{
 				System.out.println(itemService.searchByType());
 				this.showMenu(invoker);
 			}
-			case 0 -> invoker.showMenu(new MainView());
+			case 0 -> invoker.showMenu(new EmployeeView());
 		}
 	}
 }

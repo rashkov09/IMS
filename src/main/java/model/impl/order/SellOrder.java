@@ -2,12 +2,24 @@ package model.impl.order;
 
 import model.enums.order.OrderType;
 import model.iface.Processable;
+import model.impl.user.CustomerUser;
+import model.impl.user.User;
 
-public class SellOrder extends BaseOrder implements Processable {
+public class SellOrder extends InventoryOrder implements Processable {
+	private User customer;
 
-	public SellOrder() {
+	public SellOrder(CustomerUser customer) {
 		super();
 		this.setOrderType(OrderType.SELL);
+		this.customer = customer;
+	}
+
+	public User getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(User customer) {
+		this.customer = customer;
 	}
 
 	@Override

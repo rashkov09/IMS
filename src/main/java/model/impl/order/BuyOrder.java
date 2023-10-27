@@ -3,21 +3,45 @@ package model.impl.order;
 import model.enums.order.OrderType;
 import model.enums.order.PriceModifier;
 import model.iface.Processable;
+import model.impl.ItemSupplier;
+import model.impl.user.EmployeeUser;
+import model.impl.user.User;
 
 import java.math.BigDecimal;
 
-public class BuyOrder extends BaseOrder implements Processable {
+public class BuyOrder extends InventoryOrder implements Processable {
+	private ItemSupplier supplier;
+	private User employee;
 
-	public BuyOrder() {
+	public BuyOrder(EmployeeUser employee, ItemSupplier supplier) {
 		super();
 		this.setOrderType(OrderType.BUY);
+		this.employee=employee;
+		setSupplier(supplier);
+	}
+
+	public ItemSupplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(ItemSupplier supplier) {
+		this.supplier = supplier;
+		super.setPaymentMethod(supplier.getPaymentMethod());
+	}
+
+	public User getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(User employee) {
+		this.employee = employee;
 	}
 
 	@Override
 	public BigDecimal getTotalOrderAmount() {
 		return this.getOrderItems().entrySet()
 		                      .stream()
-		                      .map(entry -> entry.getKey().getItemPrice().multiply(PriceModifier.valueOf("ELECTRONICS").getPriceModifier()).multiply(BigDecimal.valueOf(entry.getValue())))
+		                      .map(entry -> entry.getKey().getItemPrice().multiply(PriceModifier.valueOf(entry.getKey().getItemCategory().name()).getPriceModifier()).multiply(BigDecimal.valueOf(entry.getValue())))
 		                      .reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
 

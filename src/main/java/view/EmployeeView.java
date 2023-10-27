@@ -4,7 +4,7 @@ import util.ConsoleRangeReader;
 
 import static java.lang.System.exit;
 
-public class MainView implements ConsoleView {
+public class EmployeeView implements ConsoleView {
 
 	private static final int MAX_CHOICE = 3;
 	private static final int MIN_CHOICE = 0;

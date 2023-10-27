@@ -1,10 +1,10 @@
-import view.MainView;
+import view.EmployeeView;
 
 public class InventoryManagementSystemApp {
 
-	private static final MainView mainView = new MainView();
+	private static final EmployeeView EMPLOYEE_VIEW = new EmployeeView();
 
 	public static void main(String[] args) {
-		mainView.showMenu(mainView);
+		EMPLOYEE_VIEW.showMenu(EMPLOYEE_VIEW);
 	}
 }

@@ -1,14 +1,24 @@
 package model.impl.order;
 
 import model.enums.order.OrderType;
+import model.enums.payment.PaymentMethod;
 
-public class BaseOrder extends AbstractOrder {
+public class InventoryOrder extends AbstractOrder {
 	private static Long ID_COUNTER=0L;
 	private Long orderId;
 	private OrderType orderType;
-	public BaseOrder() {
+	private PaymentMethod paymentMethod;
+	public InventoryOrder() {
 		super();
 		setOrderId();
+	}
+
+	public PaymentMethod getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethod paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 
 	public OrderType getOrderType() {
