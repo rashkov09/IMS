@@ -38,7 +38,7 @@ public class EmployeeView implements ConsoleView {
 				PaymentManagementView paymentManagementView = new PaymentManagementView();
 				paymentManagementView.showMenu(this,user);
 			}
-			case 0 -> invoker.showMenu(this,null );
+			case 0 -> new StartVew().showMenu(null,null);
 		}
 	}
 }

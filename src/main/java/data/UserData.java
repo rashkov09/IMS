@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import model.impl.user.User;
 
 import java.util.List;
+import java.util.Optional;
 
 import static constant.Shared.USER_FILE_PATH;
 
@@ -27,5 +28,9 @@ public class UserData extends PersistenceUnit<User> implements Data<User> {
 
 	public User getByUsernameAndPassword(String username, String password) {
 		return this.fetchAll(new TypeToken<>(){}).stream().filter(user -> user.getUsername().equals(username) && user.getPassword().equals(password)).findFirst().orElse(null);
+	}
+
+	public Long getLastId() {
+		return this.fetchAll(new TypeToken<>(){}).stream().map(User::getId).max(Long::compareTo).orElseThrow();
 	}
 }
