@@ -2,7 +2,7 @@ package data.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import model.impl.InventoryItem;
+import model.impl.item.InventoryItem;
 
 import java.time.LocalDate;
 

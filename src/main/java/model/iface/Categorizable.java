@@ -1,10 +1,10 @@
 package model.iface;
 
-import model.enums.ItemCategory;
+import model.enums.item.ItemCategory;
 
 public interface Categorizable {
 
 	void setItemCategory(ItemCategory itemCategory);
-	String getItemCategory();
+	ItemCategory getItemCategory();
 
 }

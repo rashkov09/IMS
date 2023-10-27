@@ -1,7 +1,6 @@
-package model.impl;
+package model.impl.item;
 
-import model.AbstractItem;
-import model.enums.ItemCategory;
+import model.enums.item.ItemCategory;
 
 import java.math.BigDecimal;
 import java.util.Random;

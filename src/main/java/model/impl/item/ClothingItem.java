@@ -1,9 +1,9 @@
-package model.impl;
+package model.impl.item;
 
-import model.enums.ClothingSexCategory;
-import model.enums.ClothingSize;
-import model.enums.ClothingType;
-import model.enums.ItemCategory;
+import model.enums.item.ClothingSexCategory;
+import model.enums.item.ClothingSize;
+import model.enums.item.ClothingType;
+import model.enums.item.ItemCategory;
 
 import java.math.BigDecimal;
 

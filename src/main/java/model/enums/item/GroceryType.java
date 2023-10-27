@@ -1,4 +1,4 @@
-package model.enums;
+package model.enums.item;
 
 public enum GroceryType {
 	DAIRY("Dairy Products"),

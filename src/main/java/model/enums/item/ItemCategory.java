@@ -1,4 +1,4 @@
-package model.enums;
+package model.enums.item;
 
 public enum ItemCategory {
 	ELECTRONICS("Electronics"),
@@ -42,4 +42,4 @@ public enum ItemCategory {
 	public String toString() {
 		return categoryName;
 	}
-	}
+}

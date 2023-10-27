@@ -4,11 +4,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import model.impl.ClothingItem;
-import model.impl.ElectronicsItem;
-import model.impl.FurnitureItem;
-import model.impl.GroceryItem;
-import model.impl.InventoryItem;
+import model.impl.item.ClothingItem;
+import model.impl.item.ElectronicsItem;
+import model.impl.item.FurnitureItem;
+import model.impl.item.GroceryItem;
+import model.impl.item.InventoryItem;
 
 import java.lang.reflect.Type;
 
@@ -22,7 +22,7 @@ public class ItemSerializer implements JsonSerializer<InventoryItem> {
 		itemJson.addProperty("itemManufacturer", item.getItemManufacturer());
 		itemJson.addProperty("itemCountryOfOrigin", item.getItemCountryOfOrigin());
 		itemJson.addProperty("itemDescription", item.getItemDescription());
-		itemJson.addProperty("itemCategory", item.getItemCategory());
+		itemJson.addProperty("itemCategory", item.getItemCategory().getCategoryName());
 		itemJson.addProperty("itemQuantity", item.getItemQuantity());
 		itemJson.addProperty("itemPrice", item.getItemPrice());
 

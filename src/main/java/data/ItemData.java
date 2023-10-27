@@ -1,13 +1,13 @@
 package data;
 
 import com.google.gson.reflect.TypeToken;
-import model.enums.ItemCategory;
+import model.enums.item.ItemCategory;
 import model.iface.Item;
-import model.impl.ClothingItem;
-import model.impl.ElectronicsItem;
-import model.impl.FurnitureItem;
-import model.impl.GroceryItem;
-import model.impl.InventoryItem;
+import model.impl.item.ClothingItem;
+import model.impl.item.ElectronicsItem;
+import model.impl.item.FurnitureItem;
+import model.impl.item.GroceryItem;
+import model.impl.item.InventoryItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +54,7 @@ public class ItemData {
 	}
 
 	public List<Item> getItemsByCategory(String categoryName) {
-		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemCategory().equals(categoryName))
+		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemCategory().getCategoryName().equals(categoryName))
 		           .collect(
 			           Collectors.toList());
 	}

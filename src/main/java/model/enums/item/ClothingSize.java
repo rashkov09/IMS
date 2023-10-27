@@ -1,4 +1,4 @@
-package model.enums;
+package model.enums.item;
 
 public enum ClothingSize {
 	XS("Extra Small"),

@@ -1,7 +1,7 @@
-package model.impl;
+package model.impl.item;
 
-import model.enums.ElectronicsType;
-import model.enums.ItemCategory;
+import model.enums.item.ElectronicsType;
+import model.enums.item.ItemCategory;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
