@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Admin",
+    "phone": "+359888656454",
+    "email": "admin@admin.com",
+    "username": "admin",
+    "password": "admin",
+    "isAdmin" : true,
+    "id": 1,
+    "userRole": "EMPLOYEE"
+  }
+]

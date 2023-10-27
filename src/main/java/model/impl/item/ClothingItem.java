@@ -61,18 +61,18 @@ public class ClothingItem extends InventoryItem {
 	@Override
 	public String getItemDetails() {
 		return String.format("""
-		                     Item ID: %d
-		                     Item name: %s
-		                     Manufacturer: %s
-		                     Manufactured in: %s
-		                     Description: %s
-		                     Category: %s
-		                     Type: %s
-		                     Sex: %s
-		                     Size: %s
-		                     Quantity: %d
-		                     Price: %.2f
-		                     """, this.getItemId(), this.getItemName(), this.getItemManufacturer(),
+                        Item ID: %d
+                        Item name: %s
+                        Manufacturer: %s
+                        Manufactured in: %s
+                        Description: %s
+                        Category: %s
+                        Type: %s
+                        Sex: %s
+                        Size: %s
+                        Quantity: %d
+                        Price: %.2f
+                       """, this.getItemId(), this.getItemName(), this.getItemManufacturer(),
 		                     this.getItemCountryOfOrigin(), this.getItemDescription(), this.getItemCategory(),
 		                     this.getClothingType().getTypeName(), this.getClothingSexCategory().getCategoryName(),
 		                     this.getClothingSize().toString()

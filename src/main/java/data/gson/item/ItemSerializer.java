@@ -1,4 +1,4 @@
-package data.gson;
+package data.gson.item;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
