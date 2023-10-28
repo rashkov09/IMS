@@ -3,7 +3,7 @@ package model.impl.order;
 import model.enums.order.OrderType;
 import model.enums.order.PriceModifier;
 import model.iface.Processable;
-import model.impl.ItemSupplier;
+import model.impl.supplier.ItemSupplier;
 import model.impl.user.EmployeeUser;
 import model.impl.user.User;
 

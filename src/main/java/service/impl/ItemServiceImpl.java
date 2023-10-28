@@ -138,7 +138,7 @@ public class ItemServiceImpl implements ItemService {
 	public String displayAllItems() {
 		StringBuilder builder = new StringBuilder();
 		itemData.getAll().forEach(
-			item -> builder.append(item.getItemDetails()).append(System.lineSeparator()).append(HORIZONTAL_LINE_BREAK)
+			item -> builder.append(HORIZONTAL_LINE_BREAK).append(item.getItemDetails()).append(System.lineSeparator())
 			               .append(System.lineSeparator()));
 		return builder.toString().isEmpty() ? "No items found!\n" : builder.toString();
 	}
@@ -214,6 +214,15 @@ public class ItemServiceImpl implements ItemService {
 				return "Invalid input!";
 			}
 		}
+	}
+
+	@Override
+	public InventoryItem getItemById(long itemId) {
+		InventoryItem item = itemData.getById(itemId);
+		if (item == null){
+			throw new RuntimeException("Item not found!");
+		}
+		return item;
 	}
 
 	private String getFilteredDataAsString(List<Item> filteredItems) {

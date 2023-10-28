@@ -85,8 +85,7 @@ public class UserServiceImpl implements UserService {
 	public String displayAllUsers() {
 		StringBuilder builder = new StringBuilder();
 		userData.getAll().forEach(user -> {
-			builder.append(user.toString()).append(System.lineSeparator()).append(HORIZONTAL_LINE_BREAK)
-			       .append(System.lineSeparator());
+			builder.append(HORIZONTAL_LINE_BREAK).append(user.toString()).append(System.lineSeparator());
 		});
 		return builder.toString();
 	}
