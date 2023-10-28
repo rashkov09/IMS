@@ -8,8 +8,8 @@ import model.impl.user.User;
 public class SellOrder extends InventoryOrder implements Processable {
 	private User customer;
 
-	public SellOrder(CustomerUser customer) {
-		super();
+	public SellOrder(Long orderId,CustomerUser customer) {
+		super(orderId);
 		this.setOrderType(OrderType.SELL);
 		this.customer = customer;
 	}

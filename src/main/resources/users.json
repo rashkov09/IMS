@@ -38,5 +38,15 @@
     "email": "todor@abv.bg",
     "username": "todor",
     "password": "todor"
+  },
+  {
+    "orderHistory": [],
+    "id": 5,
+    "userRole": "CUSTOMER",
+    "name": "Dobrin Rashkov",
+    "phone": "+359888333222",
+    "email": "dobrin@abv.bg",
+    "username": "dobrin",
+    "password": "dobrin"
   }
 ]

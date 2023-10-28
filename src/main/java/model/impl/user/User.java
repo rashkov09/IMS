@@ -28,4 +28,23 @@ public class User extends AbstractUser{
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("""
+                       User ID: %d
+                       Username: %s
+                       User role: %s
+                       """,this.getId(),this.getUsername(),this.getUserRole().name());
+	}
+
+	public String getProfileInfo() {
+		return String.format("""
+                       User ID: %d
+                       Name: %s
+                       Phone: %s
+                       Email: %s
+                       Username: %s
+		                     """,this.getId(),this.getName(),this.getPhone(),this.getEmail(),this.getUsername());
+	}
 }

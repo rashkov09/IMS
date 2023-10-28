@@ -1,6 +1,7 @@
 package data;
 
 import com.google.gson.reflect.TypeToken;
+import model.impl.item.InventoryItem;
 import model.impl.user.User;
 
 import java.util.List;
@@ -27,6 +28,16 @@ public class UserData extends PersistenceUnit<User> implements Data<User> {
 		List<User> users = this.fetchAll(typeToken);
 		users.add(user);
 		return this.save(users);
+	}
+
+	@Override
+	public boolean removeById(Long id) {
+		List<User> users = this.fetchAll(typeToken);
+		if (users.removeIf(user -> user.getId().equals(id))) {
+			this.save(users);
+			return true;
+		}
+		return false;
 	}
 
 	@Override

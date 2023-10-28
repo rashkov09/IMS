@@ -5,7 +5,6 @@ import model.enums.payment.PaymentMethod;
 import java.time.LocalDate;
 
 public class ItemSupplier {
-	private static Long ID_COUNTER=0L;
 	private Long supplierId;
 	private String supplierName;
 	private String supplierEmail;
@@ -16,9 +15,9 @@ public class ItemSupplier {
 	private PaymentMethod paymentMethod;
 
 	public ItemSupplier(
-		String supplierName, String supplierEmail, String supplierPhone, String supplierAddress, LocalDate contractStart,
+		Long supplierId,String supplierName, String supplierEmail, String supplierPhone, String supplierAddress, LocalDate contractStart,
 		LocalDate contractEnd, PaymentMethod paymentMethod) {
-		setSupplierId();
+		this.supplierId=supplierId;
 		this.supplierName = supplierName;
 		this.supplierEmail = supplierEmail;
 		this.supplierPhone = supplierPhone;
@@ -32,8 +31,8 @@ public class ItemSupplier {
 		return supplierId;
 	}
 
-	private void setSupplierId() {
-		this.supplierId = ++ID_COUNTER;
+	public void setSupplierId(Long supplierId) {
+		this.supplierId = supplierId;
 	}
 
 	public String getSupplierName() {

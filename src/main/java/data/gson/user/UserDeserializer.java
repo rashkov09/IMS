@@ -34,7 +34,7 @@ public class UserDeserializer implements JsonDeserializer<User> {
 				return new EmployeeUser(name,phone,email,username,password,id,userRole,isAdmin  );
 			}
 			case CUSTOMER -> {
-					return new CustomerUser(name,phone,email,username,password,id,userRole,new ArrayList<>());
+					return new CustomerUser(name,phone,email,username,password,id,userRole);
 			}
 			default ->  throw new JsonParseException("Error");
 		}

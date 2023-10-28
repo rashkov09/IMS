@@ -11,4 +11,10 @@ public interface UserService {
 	String addEmployeeUser();
 
 	String removeEmployeeUser();
+
+	String displayAllUsers();
+
+	String modifyAdminStatus();
+
+	void displayUserProfile(User user);
 }

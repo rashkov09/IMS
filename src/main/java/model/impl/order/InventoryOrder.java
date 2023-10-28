@@ -4,13 +4,12 @@ import model.enums.order.OrderType;
 import model.enums.payment.PaymentMethod;
 
 public class InventoryOrder extends AbstractOrder {
-	private static Long ID_COUNTER=0L;
 	private Long orderId;
 	private OrderType orderType;
 	private PaymentMethod paymentMethod;
-	public InventoryOrder() {
+	public InventoryOrder(Long orderId) {
 		super();
-		setOrderId();
+		this.orderId = orderId;
 	}
 
 	public PaymentMethod getPaymentMethod() {
@@ -33,8 +32,8 @@ public class InventoryOrder extends AbstractOrder {
 		return orderId;
 	}
 
-	private void setOrderId() {
-		this.orderId = ++ID_COUNTER;
+	public void setOrderId(Long orderId1) {
+		this.orderId = orderId1;
 	}
 
 }

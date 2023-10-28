@@ -1,5 +1,6 @@
 package view;
 
+import model.impl.user.EmployeeUser;
 import model.impl.user.User;
 import service.ItemSupplierService;
 import service.UserService;
@@ -11,7 +12,7 @@ public class AdminView implements ConsoleView {
 
 	private static final UserService userService = new UserServiceImpl();
 	private static final ItemSupplierService itemSupplierService = new ItemSupplierServiceImpl();
-	private static final int MAX_CHOICE = 6;
+	private static final int MAX_CHOICE = 7;
 	private static final int MIN_CHOICE = 0;
 	private static final String MENU_STRING = """
                                            <-- You are in ADMIN menu --> 
@@ -19,9 +20,10 @@ public class AdminView implements ConsoleView {
 	                                          1. Add employee
 	                                          2. Remove employee
 	                                          3. Activate/Deactivate ADMIN
-	                                          4. Add supplier
-	                                          5. Edit supplier
-	                                          6. Go to management menu
+	                                          4. Display all users
+	                                          5. Add supplier
+	                                          6. Edit supplier
+	                                          7. Go to management menu
 	                                                                                    
 	                                          0. Logout
 	                                          """;
@@ -40,10 +42,18 @@ public class AdminView implements ConsoleView {
 				this.showMenu(invoker, user);
 			}
 			case 3 -> {
+				System.out.println(userService.modifyAdminStatus());
+				this.showMenu(invoker,user);
+			}
+			case 4 -> {
+				System.out.println(userService.displayAllUsers());
+				this.showMenu(invoker,user);
+			}
+			case 5 -> {
 				System.out.println(itemSupplierService.addSupplier());
 				this.showMenu(invoker, user);
 			}
-			case 6 -> {
+			case 7 -> {
 				EmployeeView employeeView = new EmployeeView();
 				employeeView.showMenu(this,user);
 			}

@@ -22,6 +22,8 @@ import util.DateParser;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static constant.Shared.HORIZONTAL_LINE_BREAK;
+
 public class ItemServiceImpl implements ItemService {
 
 	private final static ItemData itemData = new ItemData();
@@ -126,7 +128,7 @@ public class ItemServiceImpl implements ItemService {
 	public String removeItem() {
 		System.out.printf(ITEM_PARAM_MESSAGE, "ID");
 		Long itemId = ConsoleReader.readILong();
-		if (itemData.removeItem(itemId)) {
+		if (itemData.removeById(itemId)) {
 			return String.format("Item with ID %d removed successfully!", itemId);
 		}
 		return String.format("Item with ID %d not found!", itemId);
@@ -135,7 +137,9 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public String displayAllItems() {
 		StringBuilder builder = new StringBuilder();
-		itemData.getAll().forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()));
+		itemData.getAll().forEach(
+			item -> builder.append(item.getItemDetails()).append(System.lineSeparator()).append(HORIZONTAL_LINE_BREAK)
+			               .append(System.lineSeparator()));
 		return builder.toString().isEmpty() ? "No items found!\n" : builder.toString();
 	}
 
@@ -161,7 +165,7 @@ public class ItemServiceImpl implements ItemService {
 		System.out.println(ITEM_CATEGORY_CHOICE);
 		int categoryChoice = ConsoleRangeReader.readInt(1, ItemCategory.values().length) - 1;
 		ItemCategory itemCategory = ItemCategory.values()[categoryChoice];
-		System.out.println("Do you wish to list all or choose a subtype? (y/n)");
+		System.out.println("Do you wish to list all products? (y/n)");
 		String all = ConsoleReader.readString();
 		String data = "";
 		switch (all.toLowerCase()) {

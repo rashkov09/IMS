@@ -47,7 +47,8 @@ public class ItemData extends PersistenceUnit<InventoryItem> implements Data<Inv
 		return this.fetchAll(typeToken);
 	}
 
-	public boolean removeItem(Long itemId) {
+	@Override
+	public boolean removeById(Long itemId) {
 		List<InventoryItem> items = this.fetchAll(typeToken);
 		if (items.removeIf(inventoryItem -> inventoryItem.getItemId().equals(itemId))) {
 			this.save(items);

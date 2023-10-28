@@ -38,6 +38,8 @@ public class StartVew implements ConsoleView {
 				if (registerUser != null) {
 					forwardUserView(registerUser);
 				}
+				System.out.println("Registration failed!");
+				this.showMenu(null,null);
 			}
 			case 0 -> exit(1);
 		}
@@ -48,7 +50,7 @@ public class StartVew implements ConsoleView {
 			EmployeeUser loggedEmployee = (EmployeeUser) loggedUser;
 			if (loggedEmployee.getAdmin()) {
 				AdminView adminView = new AdminView();
-				adminView.showMenu(this, loggedEmployee);
+				adminView.showMenu(this,loggedEmployee);
 			}
 			EmployeeView employeeView = new EmployeeView();
 			employeeView.showMenu(this, loggedEmployee);

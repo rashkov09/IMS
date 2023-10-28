@@ -23,4 +23,9 @@ public class EmployeeUser extends User {
 	public void setAdmin(Boolean admin) {
 		isAdmin = admin;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString()+String.format("Is ADMIN: %s\n",this.getAdmin());
+	}
 }

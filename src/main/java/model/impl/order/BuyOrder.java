@@ -13,8 +13,8 @@ public class BuyOrder extends InventoryOrder implements Processable {
 	private ItemSupplier supplier;
 	private User employee;
 
-	public BuyOrder(EmployeeUser employee, ItemSupplier supplier) {
-		super();
+	public BuyOrder(Long orderId,EmployeeUser employee, ItemSupplier supplier) {
+		super(orderId);
 		this.setOrderType(OrderType.BUY);
 		this.employee=employee;
 		setSupplier(supplier);
