@@ -1,13 +1,13 @@
 package data;
 
 import com.google.gson.reflect.TypeToken;
-import model.enums.ItemCategory;
+import model.enums.item.ItemCategory;
 import model.iface.Item;
-import model.impl.ClothingItem;
-import model.impl.ElectronicsItem;
-import model.impl.FurnitureItem;
-import model.impl.GroceryItem;
-import model.impl.InventoryItem;
+import model.impl.item.ClothingItem;
+import model.impl.item.ElectronicsItem;
+import model.impl.item.FurnitureItem;
+import model.impl.item.GroceryItem;
+import model.impl.item.InventoryItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,46 +15,58 @@ import java.util.stream.Collectors;
 
 import static constant.Shared.ITEM_FILE_PATH;
 
-public class ItemData {
+public class ItemData extends PersistenceUnit<InventoryItem> implements Data<InventoryItem> {
 
-	private static final DataPersistence<InventoryItem> itemPersistenceUnit = new PersistenceUnit<>(ITEM_FILE_PATH);
+	private static final TypeToken<List<InventoryItem>> typeToken = new TypeToken<>() {
+	};
 
-	public boolean addItem(InventoryItem item) {
-		List<InventoryItem> items = itemPersistenceUnit.fetchAll(new TypeToken<>() {
-		});
+	public ItemData() {
+		super(ITEM_FILE_PATH);
+	}
+
+	@Override
+	public boolean add(InventoryItem item) {
+		List<InventoryItem> items = this.fetchAll(typeToken);
 		items.add(item);
-		return itemPersistenceUnit.save(items);
+		return this.save(items);
 	}
 
-	public List<InventoryItem> getAllItems() {
-		return itemPersistenceUnit.fetchAll(new TypeToken<>() {
-		});
+	@Override
+	public InventoryItem getById(Long id) {
+		return this.fetchAll(typeToken).stream().filter(inventoryItem -> inventoryItem.getItemId().equals(id)).findFirst()
+		           .orElse(null);
 	}
 
-	public boolean removeItem(Long itemId) {
-		List<InventoryItem> items = itemPersistenceUnit.fetchAll(new TypeToken<>() {
-		});
+	@Override
+	public Long getLastId() {
+		return this.fetchAll(typeToken).stream().map(InventoryItem::getItemId).max(Long::compareTo).orElse(0L);
+	}
+
+	@Override
+	public List<InventoryItem> getAll() {
+		return this.fetchAll(typeToken);
+	}
+
+	@Override
+	public boolean removeById(Long itemId) {
+		List<InventoryItem> items = this.fetchAll(typeToken);
 		if (items.removeIf(inventoryItem -> inventoryItem.getItemId().equals(itemId))) {
-			itemPersistenceUnit.save(items);
+			this.save(items);
 			return true;
 		}
 		return false;
 	}
 
-	public Item getItemById(long itemId) {
-		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemId().equals(itemId)).findFirst()
-		           .orElse(null);
-	}
-
 	public List<Item> getItemsByName(String param) {
-		return this.getAllItems().stream()
+		return this.fetchAll(typeToken).stream()
 		           .filter(inventoryItem -> inventoryItem.getItemName().toLowerCase().contains(param.toLowerCase()))
 		           .collect(
 			           Collectors.toList());
 	}
 
 	public List<Item> getItemsByCategory(String categoryName) {
-		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemCategory().equals(categoryName))
+		return this.fetchAll(typeToken).stream()
+		           .filter(inventoryItem -> inventoryItem.getItemCategory().getCategoryName().equals(categoryName))
 		           .collect(
 			           Collectors.toList());
 	}
