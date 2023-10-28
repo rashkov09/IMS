@@ -15,46 +15,57 @@ import java.util.stream.Collectors;
 
 import static constant.Shared.ITEM_FILE_PATH;
 
-public class ItemData {
+public class ItemData extends PersistenceUnit<InventoryItem> implements Data<InventoryItem> {
 
-	private static final DataPersistence<InventoryItem> itemPersistenceUnit = new PersistenceUnit<>(ITEM_FILE_PATH);
+	private static final TypeToken<List<InventoryItem>> typeToken = new TypeToken<>() {
+	};
 
-	public boolean addItem(InventoryItem item) {
-		List<InventoryItem> items = itemPersistenceUnit.fetchAll(new TypeToken<>() {
-		});
-		items.add(item);
-		return itemPersistenceUnit.save(items);
+	public ItemData() {
+		super(ITEM_FILE_PATH);
 	}
 
-	public List<InventoryItem> getAllItems() {
-		return itemPersistenceUnit.fetchAll(new TypeToken<>() {
-		});
+	@Override
+	public boolean add(InventoryItem item) {
+		List<InventoryItem> items = this.fetchAll(typeToken);
+		items.add(item);
+		return this.save(items);
+	}
+
+	@Override
+	public InventoryItem getById(Long id) {
+		return this.fetchAll(typeToken).stream().filter(inventoryItem -> inventoryItem.getItemId().equals(id)).findFirst()
+		           .orElse(null);
+	}
+
+	@Override
+	public Long getLastId() {
+		return this.fetchAll(typeToken).stream().map(InventoryItem::getItemId).max(Long::compareTo).orElse(0L);
+	}
+
+	@Override
+	public List<InventoryItem> getAll() {
+		return this.fetchAll(typeToken);
 	}
 
 	public boolean removeItem(Long itemId) {
-		List<InventoryItem> items = itemPersistenceUnit.fetchAll(new TypeToken<>() {
-		});
+		List<InventoryItem> items = this.fetchAll(typeToken);
 		if (items.removeIf(inventoryItem -> inventoryItem.getItemId().equals(itemId))) {
-			itemPersistenceUnit.save(items);
+			this.save(items);
 			return true;
 		}
 		return false;
 	}
 
-	public Item getItemById(long itemId) {
-		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemId().equals(itemId)).findFirst()
-		           .orElse(null);
-	}
-
 	public List<Item> getItemsByName(String param) {
-		return this.getAllItems().stream()
+		return this.fetchAll(typeToken).stream()
 		           .filter(inventoryItem -> inventoryItem.getItemName().toLowerCase().contains(param.toLowerCase()))
 		           .collect(
 			           Collectors.toList());
 	}
 
 	public List<Item> getItemsByCategory(String categoryName) {
-		return this.getAllItems().stream().filter(inventoryItem -> inventoryItem.getItemCategory().getCategoryName().equals(categoryName))
+		return this.fetchAll(typeToken).stream()
+		           .filter(inventoryItem -> inventoryItem.getItemCategory().getCategoryName().equals(categoryName))
 		           .collect(
 			           Collectors.toList());
 	}

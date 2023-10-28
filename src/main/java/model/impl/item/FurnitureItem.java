@@ -18,14 +18,6 @@ public class FurnitureItem extends InventoryItem{
 		this.deliveryPrice = deliveryPrice;
 	}
 
-	public FurnitureItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
-		ItemCategory category,
-		Integer quantity, BigDecimal price, FurnitureType furnitureType, BigDecimal deliveryPrice) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, quantity, price);
-		this.furnitureType = furnitureType;
-		this.deliveryPrice = deliveryPrice;
-	}
 
 	public FurnitureType getFurnitureType() {
 		return furnitureType;

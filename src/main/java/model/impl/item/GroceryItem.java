@@ -11,13 +11,6 @@ public class GroceryItem extends InventoryItem{
 	private GroceryType groceryType;
 	private LocalDate expirationDate;
 
-	public GroceryItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
-		ItemCategory category,BigDecimal price,Integer quantity, GroceryType groceryType, LocalDate expirationDate) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, quantity, price);
-		this.groceryType = groceryType;
-		this.expirationDate = expirationDate;
-	}
 
 	public GroceryItem(
 		Long itemId, String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,

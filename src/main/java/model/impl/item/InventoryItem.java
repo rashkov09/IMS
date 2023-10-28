@@ -3,7 +3,6 @@ package model.impl.item;
 import model.enums.item.ItemCategory;
 
 import java.math.BigDecimal;
-import java.util.Random;
 
 public  class InventoryItem extends AbstractItem {
 	private Long itemId;
@@ -18,24 +17,9 @@ public  class InventoryItem extends AbstractItem {
 		this.itemQuantity = itemQuantity;
 	}
 
-	public InventoryItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
-		ItemCategory category, Integer quantity,
-		BigDecimal price) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, price);
-		setItemId();
-		this.itemQuantity = quantity;
-	}
 
 	public Long getItemId() {
 		return itemId;
-	}
-
-	private void setItemId() {
-		Random random = new Random();
-		long min = 0;
-		long max = Long.MAX_VALUE;
-		this.itemId = random.nextLong(min, max);
 	}
 
 	public void setItemId(Long id){

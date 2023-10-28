@@ -23,17 +23,6 @@ public class ClothingItem extends InventoryItem {
 		this.clothingSize = clothingSize;
 	}
 
-	public ClothingItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
-		ItemCategory category,
-		Integer quantity, BigDecimal price, ClothingType clothingType, ClothingSexCategory clothingSexCategory,
-		ClothingSize clothingSize) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, quantity, price);
-		this.clothingType = clothingType;
-		this.clothingSexCategory = clothingSexCategory;
-		this.clothingSize = clothingSize;
-	}
-
 	public ClothingType getClothingType() {
 		return clothingType;
 	}

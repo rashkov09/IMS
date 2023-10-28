@@ -40,7 +40,7 @@ public class ItemServiceImpl implements ItemService {
 		int categoryChoice = ConsoleRangeReader.readInt(1, ItemCategory.values().length) - 1;
 		System.out.println(ITEM_INFORMATION_MESSAGE);
 
-		if (itemData.addItem(getItem(categoryChoice))) {
+		if (itemData.add(getItem(categoryChoice))) {
 			return "Item added successfully!";
 		}
 		return "Item addition failed!";
@@ -54,6 +54,7 @@ public class ItemServiceImpl implements ItemService {
 		ItemCategory category = ItemCategory.values()[categoryChoice];
 		int itemQuantity = 0;
 		BigDecimal itemPrice = BigDecimal.ZERO;
+		Long id = itemData.getLastId() + 1;
 		for (int i = 0; i < ITEM_COMMON_PARAMS.size(); i++) {
 			System.out.printf(ITEM_PARAM_MESSAGE, ITEM_COMMON_PARAMS.get(i));
 			try {
@@ -79,7 +80,7 @@ public class ItemServiceImpl implements ItemService {
 				int subtype = ConsoleRangeReader.readInt(1, ElectronicsType.values().length) - 1;
 				System.out.printf(ITEM_PARAM_MESSAGE, "warranty");
 				int warranty = ConsoleReader.readInt();
-				return new ElectronicsItem(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
+				return new ElectronicsItem(id, itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
 				                           itemPrice, itemQuantity, ElectronicsType.values()[subtype], warranty);
 			}
 			case 1 -> {
@@ -88,7 +89,8 @@ public class ItemServiceImpl implements ItemService {
 				int subtype = ConsoleRangeReader.readInt(1, GroceryType.values().length) - 1;
 				System.out.println("Please, insert expiration date:");
 				String expirationDate = ConsoleReader.readString();
-				return new GroceryItem(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, itemPrice,
+				return new GroceryItem(id, itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
+				                       itemPrice,
 				                       itemQuantity, GroceryType.values()[subtype],
 				                       DateParser.parseFromString(expirationDate));
 			}
@@ -103,8 +105,8 @@ public class ItemServiceImpl implements ItemService {
 				System.out.println("Please,choose size from the list above");
 				int clothingSize = ConsoleRangeReader.readInt(1, ClothingSize.values().length) - 1;
 
-				return new ClothingItem(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
-				                        itemQuantity, itemPrice, ClothingType.values()[subtype],
+				return new ClothingItem(id, itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
+				                        itemPrice, itemQuantity, ClothingType.values()[subtype],
 				                        ClothingSexCategory.values()[sexCategory], ClothingSize.values()[clothingSize]);
 			}
 			case 3 -> {
@@ -113,8 +115,8 @@ public class ItemServiceImpl implements ItemService {
 				int subtype = ConsoleRangeReader.readInt(1, FurnitureType.values().length) - 1;
 				System.out.println("Please, enter delivery price for furniture item:");
 				BigDecimal deliveryPrice = ConsoleReader.readBigDecimal();
-				return new FurnitureItem(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
-				                         itemQuantity, itemPrice, FurnitureType.values()[subtype], deliveryPrice);
+				return new FurnitureItem(id, itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category,
+				                         itemPrice, itemQuantity, FurnitureType.values()[subtype], deliveryPrice);
 			}
 			default -> throw new IllegalStateException("Invalid type");
 		}
@@ -133,7 +135,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public String displayAllItems() {
 		StringBuilder builder = new StringBuilder();
-		itemData.getAllItems().forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()));
+		itemData.getAll().forEach(item -> builder.append(item.getItemDetails()).append(System.lineSeparator()));
 		return builder.toString().isEmpty() ? "No items found!\n" : builder.toString();
 	}
 
@@ -141,7 +143,7 @@ public class ItemServiceImpl implements ItemService {
 	public String searchById() {
 		System.out.printf(ITEM_PARAM_MESSAGE, "ID");
 		long itemId = ConsoleReader.readILong();
-		Item item = itemData.getItemById(itemId);
+		Item item = itemData.getById(itemId);
 		return item == null ? String.format("Item with ID %d not found!", itemId) : item.getItemDetails();
 	}
 
