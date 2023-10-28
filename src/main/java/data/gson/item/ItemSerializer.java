@@ -22,22 +22,22 @@ public class ItemSerializer implements JsonSerializer<InventoryItem> {
 		itemJson.addProperty("itemManufacturer", item.getItemManufacturer());
 		itemJson.addProperty("itemCountryOfOrigin", item.getItemCountryOfOrigin());
 		itemJson.addProperty("itemDescription", item.getItemDescription());
-		itemJson.addProperty("itemCategory", item.getItemCategory().getCategoryName());
+		itemJson.addProperty("itemCategory", item.getItemCategory().name());
 		itemJson.addProperty("itemQuantity", item.getItemQuantity());
 		itemJson.addProperty("itemPrice", item.getItemPrice());
 
 		if (item instanceof ElectronicsItem electronicsItem) {
-			itemJson.addProperty("electronicsType",electronicsItem.getElectronicsType().getTypeName());
+			itemJson.addProperty("electronicsType",electronicsItem.getElectronicsType().name());
 			itemJson.addProperty("warranty",electronicsItem.getWarranty());
 		} else if (item instanceof GroceryItem groceryItem) {
-			itemJson.addProperty("groceryType",groceryItem.getGroceryType().getTypeName());
+			itemJson.addProperty("groceryType",groceryItem.getGroceryType().name());
 			itemJson.addProperty("expirationDate",groceryItem.getExpirationDate().toString());
 		} else if (item instanceof ClothingItem clothingItem) {
-			itemJson.addProperty("clothingType",clothingItem.getClothingType().getTypeName());
-			itemJson.addProperty("clothingSexCategory",((ClothingItem) item).getClothingSexCategory().getCategoryName());
+			itemJson.addProperty("clothingType",clothingItem.getClothingType().name());
+			itemJson.addProperty("clothingSexCategory",((ClothingItem) item).getClothingSexCategory().name());
 			itemJson.addProperty("clothingSize",((ClothingItem) item).getClothingSize().getSizeName());
 		} else if (item instanceof FurnitureItem furnitureItem) {
-			itemJson.addProperty("furnitureType",furnitureItem.getFurnitureType().getTypeName());
+			itemJson.addProperty("furnitureType",furnitureItem.getFurnitureType().name());
 			itemJson.addProperty("deliveryPrice",furnitureItem.getDeliveryPrice());
 		}
 		return itemJson;

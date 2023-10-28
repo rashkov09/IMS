@@ -11,8 +11,7 @@ import util.ConsoleRangeReader;
 public class AdminView implements ConsoleView {
 
 	private static final UserService userService = new UserServiceImpl();
-	private static final ItemSupplierService itemSupplierService = new ItemSupplierServiceImpl();
-	private static final int MAX_CHOICE = 7;
+	private static final int MAX_CHOICE = 6;
 	private static final int MIN_CHOICE = 0;
 	private static final String MENU_STRING = """
                                            <-- You are in ADMIN menu --> 
@@ -21,9 +20,8 @@ public class AdminView implements ConsoleView {
 	                                          2. Remove employee
 	                                          3. Activate/Deactivate ADMIN
 	                                          4. Display all users
-	                                          5. Add supplier
-	                                          6. Edit supplier
-	                                          7. Go to management menu
+	                                          5. Supplier menu
+	                                          6. Go to management menu
 	                                                                                    
 	                                          0. Logout
 	                                          """;
@@ -50,10 +48,10 @@ public class AdminView implements ConsoleView {
 				this.showMenu(invoker,user);
 			}
 			case 5 -> {
-				System.out.println(itemSupplierService.addSupplier());
-				this.showMenu(invoker, user);
+				SupplierView supplierView = new SupplierView();
+				supplierView.showMenu(this, user);
 			}
-			case 7 -> {
+			case 6 -> {
 				EmployeeView employeeView = new EmployeeView();
 				employeeView.showMenu(this,user);
 			}
