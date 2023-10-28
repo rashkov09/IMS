@@ -1,5 +1,7 @@
 package service;
 
+import model.impl.item.InventoryItem;
+
 public interface ItemService {
 	String addItem();
 
@@ -11,4 +13,6 @@ public interface ItemService {
 	String searchByName();
 
 	String searchByType();
+
+	InventoryItem getItemById(long itemId);
 }

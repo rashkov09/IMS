@@ -1,10 +1,11 @@
-import view.MainView;
+import view.EmployeeView;
+import view.StartVew;
 
 public class InventoryManagementSystemApp {
 
-	private static final MainView mainView = new MainView();
+	private static final StartVew startView = new StartVew();
 
 	public static void main(String[] args) {
-		mainView.showMenu(mainView);
+		startView.showMenu(null,null);
 	}
 }

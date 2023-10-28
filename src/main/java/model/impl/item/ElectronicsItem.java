@@ -1,7 +1,7 @@
-package model.impl;
+package model.impl.item;
 
-import model.enums.ElectronicsType;
-import model.enums.ItemCategory;
+import model.enums.item.ElectronicsType;
+import model.enums.item.ItemCategory;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,14 +12,6 @@ public class ElectronicsItem extends InventoryItem {
 	private LocalDate dateOfPurchase;
 	private Integer warranty;
 
-	public ElectronicsItem(
-		String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
-		ItemCategory category,
-		BigDecimal price, Integer itemQuantity, ElectronicsType electronicsType, Integer warranty) {
-		super(itemName, itemManufacturer, itemCountryOfOrigin, itemDescription, category, itemQuantity,price);
-		this.electronicsType = electronicsType;
-		this.warranty = warranty;
-	}
 
 	public ElectronicsItem(
 		Long itemId, String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,

@@ -1,6 +1,7 @@
 package util;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public final class ConsoleReader {
@@ -13,7 +14,12 @@ public final class ConsoleReader {
 	}
 
 	public static String readString() {
-		return scanner.nextLine();
+		String line = scanner.nextLine();
+		while (line == null || line.isEmpty()){
+			line = scanner.nextLine();
+			System.out.println("Invalid input! Cannot be empty!");
+		}
+		return line;
 	}
 
 	public static int readInt() {
@@ -42,5 +48,16 @@ public final class ConsoleReader {
 		BigDecimal input = scanner.nextBigDecimal();
 		scanner.nextLine();
 		return input;
+	}
+
+	public static LocalDate readDateString() {
+		String datePattern = "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$";
+		String date = scanner.nextLine();
+		while (!date.matches(datePattern) || date.isEmpty()){
+			System.out.println("Invalid date input! Format should be yyyy-MM-dd");
+			date = scanner.nextLine();
+		}
+		String[] data = date.split("-");
+		return LocalDate.of(Integer.parseInt(data[0]),Integer.parseInt(data[1]),Integer.parseInt(data[2]));
 	}
 }

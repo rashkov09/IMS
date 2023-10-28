@@ -1,10 +1,11 @@
 package view;
 
+import model.impl.user.User;
 import util.ConsoleRangeReader;
 
 import static java.lang.System.exit;
 
-public class MainView implements ConsoleView {
+public class EmployeeView implements ConsoleView {
 
 	private static final int MAX_CHOICE = 3;
 	private static final int MIN_CHOICE = 0;
@@ -17,27 +18,27 @@ public class MainView implements ConsoleView {
 	                                         2. Order Management
 	                                         3. Payment Management
 	                                                                                  
-	                                         0. Exit
+	                                         0. Logout
 	                                          """;
 
 	@Override
-	public void showMenu(ConsoleView invoker) {
+	public void showMenu(ConsoleView invoker, User user) {
 		System.out.println(menuString);
 		int choice = ConsoleRangeReader.readInt(MIN_CHOICE, MAX_CHOICE);
 		switch (choice) {
 			case 1 -> {
 				ItemManagementView itemManagementView = new ItemManagementView();
-				itemManagementView.showMenu(this);
+				itemManagementView.showMenu(this,user);
 			}
 			case 2 -> {
 				OrderManagementView orderManagementView = new OrderManagementView();
-				orderManagementView.showMenu(this);
+				orderManagementView.showMenu(this,user);
 			}
 			case 3 -> {
 				PaymentManagementView paymentManagementView = new PaymentManagementView();
-				paymentManagementView.showMenu(this);
+				paymentManagementView.showMenu(this,user);
 			}
-			case 0 -> exit(1);
+			case 0 -> new StartVew().showMenu(null,null);
 		}
 	}
 }

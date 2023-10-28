@@ -1,6 +1,6 @@
-package model;
+package model.impl.item;
 
-import model.enums.ItemCategory;
+import model.enums.item.ItemCategory;
 import model.iface.Item;
 import model.iface.Sellable;
 import model.iface.Categorizable;
@@ -85,8 +85,8 @@ public abstract class AbstractItem implements Item, Sellable, Categorizable, Bre
 	}
 
 	@Override
-	public String getItemCategory() {
-		return this.itemCategory.getCategoryName();
+	public ItemCategory getItemCategory() {
+		return this.itemCategory;
 	}
 
 	@Override

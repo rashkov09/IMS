@@ -1,4 +1,4 @@
-package model.enums;
+package model.enums.item;
 
 public enum ElectronicsType {
 	LAPTOP("Laptop"),
@@ -11,7 +11,7 @@ public enum ElectronicsType {
 	GAMING_CONSOLE("Gaming Console"),
 	ACCESSORY("Accessory");
 
-	private String type;
+	private final String type;
 
 	ElectronicsType(String type) {
 		this.type = type;

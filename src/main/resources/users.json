@@ -1,0 +1,52 @@
+[
+  {
+    "isAdmin": true,
+    "id": 1,
+    "userRole": "EMPLOYEE",
+    "name": "Admin",
+    "phone": "+359888656454",
+    "email": "admin@admin.com",
+    "username": "admin",
+    "password": "admin"
+  },
+  {
+    "orderHistory": [],
+    "id": 2,
+    "userRole": "CUSTOMER",
+    "name": "Customer",
+    "phone": "+359888656454",
+    "email": "customer@customer.com",
+    "username": "customer",
+    "password": "customer"
+  },
+  {
+    "isAdmin": false,
+    "id": 3,
+    "userRole": "EMPLOYEE",
+    "name": "Pesho",
+    "phone": "1238109231",
+    "email": "pesho@abv.bg",
+    "username": "pesho",
+    "password": "pesho"
+  },
+  {
+    "isAdmin": false,
+    "id": 4,
+    "userRole": "EMPLOYEE",
+    "name": "Todor",
+    "phone": "102499104",
+    "email": "todor@abv.bg",
+    "username": "todor",
+    "password": "todor"
+  },
+  {
+    "orderHistory": [],
+    "id": 5,
+    "userRole": "CUSTOMER",
+    "name": "Dobrin Rashkov",
+    "phone": "+359888333222",
+    "email": "dobrin@abv.bg",
+    "username": "dobrin",
+    "password": "dobrin"
+  }
+]

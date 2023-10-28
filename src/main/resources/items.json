@@ -1,1 +1,26 @@
-[{"electronicsType":"SMARTPHONE","warranty":3,"itemId":4468828922421874623,"itemQuantity":4,"itemName":"Lenovo P3","itemManufacturer":"Lenovo","itemCountryOfOrigin":"Austria","itemDescription":"Very good smartphone","itemCategory":"ELECTRONICS","itemPrice":1222.33}]
+[
+  {
+    "electronicsType": "SMARTPHONE",
+    "warranty": 9,
+    "itemId": 1,
+    "itemQuantity": 9,
+    "itemName": "Samsung L50",
+    "itemManufacturer": "Samsung",
+    "itemCountryOfOrigin": "China",
+    "itemDescription": "Newest smartphone",
+    "itemCategory": "ELECTRONICS",
+    "itemPrice": 699.99
+  },
+  {
+    "groceryType": "SNACKS",
+    "expirationDate": "2023-12-12",
+    "itemId": 2,
+    "itemQuantity": 20,
+    "itemName": "Moreni",
+    "itemManufacturer": "Moreni LtD.",
+    "itemCountryOfOrigin": "Bulgaria",
+    "itemDescription": "Vafla",
+    "itemCategory": "FOOD_GROCERIES",
+    "itemPrice": 2.39
+  }
+]
