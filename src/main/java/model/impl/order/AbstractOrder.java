@@ -6,28 +6,36 @@ import model.impl.item.InventoryItem;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractOrder implements Order {
 
-	private Map<InventoryItem, Integer> orderItems;
+	private List<OrderItemLine> orderItems;
 	private OrderStatus orderStatus;
 	private LocalDateTime stampCreated;
 	private LocalDateTime stampModified;
 
 	public AbstractOrder() {
-		this.orderItems = new LinkedHashMap<>();
+		this.orderItems = new ArrayList<>();
 		this.orderStatus = OrderStatus.CREATED;
 		this.stampCreated = LocalDateTime.now();
-		this.stampModified = null;
+		this.stampModified = LocalDateTime.now();;
 	}
 
-	public Map<InventoryItem, Integer> getOrderItems() {
+	public AbstractOrder(
+		List<OrderItemLine> orderItems, OrderStatus orderStatus, LocalDateTime stampCreated, LocalDateTime stampModified) {
+		this.orderItems = orderItems;
+		this.orderStatus = orderStatus;
+		this.stampCreated = stampCreated;
+		this.stampModified = stampModified;
+	}
+
+	public List<OrderItemLine> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(Map<InventoryItem, Integer> orderItems) {
+	public void setOrderItems(List<OrderItemLine> orderItems) {
 		this.orderItems = orderItems;
 	}
 
@@ -57,37 +65,15 @@ public abstract class AbstractOrder implements Order {
 
 	@Override
 	public void addItem(InventoryItem item, Integer quantity) {
-		if (this.orderItems.containsKey(item)) {
-			this.orderItems.put(item, this.orderItems.get(item) + quantity);
-		} else {
-			this.orderItems.put(item, quantity);
-		}
+		this.orderItems.add(new OrderItemLine(item,quantity));
 	}
 
 	@Override
 	public BigDecimal getTotalOrderAmount() {
-		return this.orderItems.entrySet()
+		return this.orderItems
 		                      .stream()
-		                      .map(entry -> entry.getKey().getItemPrice().multiply(BigDecimal.valueOf(entry.getValue())))
+		                      .map(line -> line.getItem().getItemPrice().multiply(BigDecimal.valueOf(line.getQuantity())))
 		                      .reduce(BigDecimal.ZERO, BigDecimal::add);
 	}
-
-	@Override
-	public String printOrder() {
-		StringBuilder builder = new StringBuilder();
-		builder
-			.append("Order created: ").append(this.getStampCreated())
-			.append("\t\t")
-			.append("Order modified: ").append(this.getStampModified() != null ? this.getStampModified() : "never")
-			.append(System.lineSeparator())
-			.append("Order status: ").append(this.getOrderStatus().name()).append(System.lineSeparator());
-		this.getOrderItems().forEach((key, value) -> {
-			builder.append("Item: ").append(key.displayItemDescription()).append("\t\t").append("Qty: ").append(value).append("\t\t")
-			       .append("TOTAL: ").append(key.getItemPrice().multiply(BigDecimal.valueOf(value)))
-			       .append(System.lineSeparator());
-		});
-		return builder.toString();
-	}
-
 
 }

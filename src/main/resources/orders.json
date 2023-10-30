@@ -1,0 +1,76 @@
+[
+  {
+    "supplier": {
+      "items": [
+        {
+          "itemId": 2,
+          "itemName": "Moreni",
+          "itemManufacturer": "Moreni LtD.",
+          "itemCountryOfOrigin": "Bulgaria",
+          "itemDescription": "Vafla",
+          "itemCategory": "FOOD_GROCERIES",
+          "itemQuantity": 270,
+          "itemPrice": 2.39,
+          "groceryType": "SNACKS",
+          "expirationDate": "2023-12-12"
+        }
+      ],
+      "supplierId": 1,
+      "supplierName": "Tony LTD",
+      "supplierEmail": "tony@gmail.com",
+      "supplierPhone": "644584654",
+      "supplierAddress": "gr.Plovdiv",
+      "contractStart": "2023-12-01",
+      "contractEnd": "2023-12-02",
+      "paymentMethod": "BANK_TRANSFER"
+    },
+    "employee": {
+      "isAdmin": true,
+      "id": 1,
+      "userRole": "EMPLOYEE",
+      "name": "Admin",
+      "phone": "+359888656454",
+      "email": "admin@admin.com",
+      "username": "admin",
+      "password": "admin"
+    },
+    "orderId": 1,
+    "orderType": "BUY",
+    "paymentMethod": "BANK_TRANSFER",
+    "orderItems": [
+      {
+        "item": {
+          "itemId": 2,
+          "itemName": "Moreni",
+          "itemManufacturer": "Moreni LtD.",
+          "itemCountryOfOrigin": "Bulgaria",
+          "itemDescription": "Vafla",
+          "itemCategory": "FOOD_GROCERIES",
+          "itemQuantity": 270,
+          "itemPrice": 2.39,
+          "groceryType": "SNACKS",
+          "expirationDate": "2023-12-12"
+        },
+        "quantity": 125
+      },
+      {
+        "item": {
+          "itemId": 2,
+          "itemName": "Moreni",
+          "itemManufacturer": "Moreni LtD.",
+          "itemCountryOfOrigin": "Bulgaria",
+          "itemDescription": "Vafla",
+          "itemCategory": "FOOD_GROCERIES",
+          "itemQuantity": 270,
+          "itemPrice": 2.39,
+          "groceryType": "SNACKS",
+          "expirationDate": "2023-12-12"
+        },
+        "quantity": 125
+      }
+    ],
+    "orderStatus": "CREATED",
+    "stampCreated": "2023-10-30 03:39:25",
+    "stampModified": "2023-10-30 03:39:25"
+  }
+]

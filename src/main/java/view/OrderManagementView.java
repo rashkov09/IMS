@@ -1,9 +1,7 @@
 package view;
 
 import model.impl.user.User;
-import service.ItemService;
 import service.OrderService;
-import service.impl.ItemServiceImpl;
 import service.impl.OrderServiceImpl;
 import util.ConsoleRangeReader;
 
@@ -30,7 +28,7 @@ public class OrderManagementView implements ConsoleView{
 		int choice = ConsoleRangeReader.readInt(MIN_CHOICE, MAX_CHOICE);
 		switch (choice) {
 			case 1 -> {
-				System.out.println(orderService.addOrder());
+				System.out.println(orderService.addOrder(user));
 				this.showMenu(invoker,user);
 			}
 			case 2 -> {
