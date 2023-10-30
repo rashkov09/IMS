@@ -2,7 +2,10 @@ package model.impl.order;
 
 import model.impl.item.InventoryItem;
 
+import java.math.BigDecimal;
+
 public class OrderItemLine {
+
 	private InventoryItem item;
 	private Integer quantity;
 
@@ -25,5 +28,9 @@ public class OrderItemLine {
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+
+	public BigDecimal getTotalLinePrice(){
+		return this.getItem().getItemPrice().multiply(BigDecimal.valueOf(this.getQuantity()));
 	}
 }

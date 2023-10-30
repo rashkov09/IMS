@@ -1,6 +1,7 @@
 package service.impl;
 
 import data.OrderData;
+import model.enums.payment.PaymentMethod;
 import model.impl.item.InventoryItem;
 import model.impl.order.BuyOrder;
 import model.impl.order.InventoryOrder;
@@ -14,14 +15,17 @@ import service.ItemSupplierService;
 import service.OrderService;
 import util.ConsoleReader;
 
+import java.util.ArrayList;
+
 import static constant.Shared.HORIZONTAL_LINE_BREAK;
 
 public class OrderServiceImpl implements OrderService {
 	private static final OrderData orderData = new OrderData();
 	private static final ItemSupplierService supplierService = new ItemSupplierServiceImpl();
 
+
 	@Override
-	public String addOrder(User user) {
+	public InventoryOrder addOrder(User user) {
 		Long orderId = orderData.getLastId()+1;
 		switch (user.getUserRole()){
 			case EMPLOYEE -> {
@@ -35,18 +39,32 @@ public class OrderServiceImpl implements OrderService {
 				}
 				System.out.println(inventoryOrder.printOrder());
 				if(orderData.add(inventoryOrder)){
-					return "Order added successfully!";
+					System.out.println("Order added successfully!");
+					return inventoryOrder;
 				}
 			}
 			case CUSTOMER -> {
+				CustomerUser customer = (CustomerUser) user;
+				if (customer.getUserCart().isEmpty()){
+					System.out.println("No items in cart!");
+					return null;
+				}
 				InventoryOrder inventoryOrder = new SellOrder(orderId, (CustomerUser) user);
+				inventoryOrder.setOrderItems(customer.getUserCart());
+				customer.setUserCart(new ArrayList<>());
+				System.out.println("Please, choose payment method:");
+				System.out.println(PaymentMethod.getAll());
+				int paymentChoice = ConsoleReader.readInt()-1;
+				inventoryOrder.setPaymentMethod(PaymentMethod.values()[paymentChoice]);
+
 				if (orderData.add(inventoryOrder)) {
-					((CustomerUser) user).getOrderHistory().add(inventoryOrder);
-					return "Order added successfully!";
+					System.out.println("Order added successfully!");
+					return inventoryOrder;
 				}
 			}
 		}
-		return "Order addition failed!";
+		System.out.println("Order addition failed!");
+		return null;
 	}
 
 	private void addItemToOrder(ItemSupplier itemSupplier, BuyOrder inventoryOrder) {
@@ -78,7 +96,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public String displayAllOrders() {
 		StringBuilder builder = new StringBuilder();
-		orderData.getAll().forEach(order -> builder.append(HORIZONTAL_LINE_BREAK).append(order.toString()).append(System.lineSeparator()));
+		orderData.getAll().forEach(order -> builder.append(HORIZONTAL_LINE_BREAK).append(order.printOrder()).append(System.lineSeparator()));
 		return builder.toString();
 	}
 }

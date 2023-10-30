@@ -10,43 +10,297 @@
     "password": "admin"
   },
   {
-    "orderHistory": [],
+    "userCart": [],
+    "orderHistory": [
+      null,
+      {
+        "customer": {
+          "userCart": [],
+          "orderHistory": [
+            null
+          ],
+          "id": 2,
+          "userRole": "CUSTOMER",
+          "name": "Customer",
+          "phone": "123123",
+          "email": "customer@abv.bg",
+          "username": "customer",
+          "password": "customer"
+        },
+        "orderId": 5,
+        "orderType": "SELL",
+        "paymentMethod": "CARD",
+        "orderItems": [
+          {
+            "item": {
+              "itemId": 1,
+              "itemName": "Samsung L50",
+              "itemManufacturer": "Samsung",
+              "itemCountryOfOrigin": "China",
+              "itemDescription": "Newest smartphone",
+              "itemCategory": "ELECTRONICS",
+              "itemQuantity": 9,
+              "itemPrice": 699.99,
+              "electronicsType": "SMARTPHONE",
+              "warranty": 9
+            },
+            "quantity": 3
+          }
+        ],
+        "orderStatus": "CREATED",
+        "stampCreated": "2023-10-30 23:10:37",
+        "stampModified": "2023-10-30 23:10:37"
+      },
+      {
+        "customer": {
+          "userCart": [],
+          "orderHistory": [
+            null,
+            {
+              "customer": {
+                "userCart": [],
+                "orderHistory": [
+                  null
+                ],
+                "id": 2,
+                "userRole": "CUSTOMER",
+                "name": "Customer",
+                "phone": "123123",
+                "email": "customer@abv.bg",
+                "username": "customer",
+                "password": "customer"
+              },
+              "orderId": 5,
+              "orderType": "SELL",
+              "paymentMethod": "CARD",
+              "orderItems": [
+                {
+                  "item": {
+                    "itemId": 1,
+                    "itemName": "Samsung L50",
+                    "itemManufacturer": "Samsung",
+                    "itemCountryOfOrigin": "China",
+                    "itemDescription": "Newest smartphone",
+                    "itemCategory": "ELECTRONICS",
+                    "itemQuantity": 9,
+                    "itemPrice": 699.99,
+                    "electronicsType": "SMARTPHONE",
+                    "warranty": 9
+                  },
+                  "quantity": 3
+                }
+              ],
+              "orderStatus": "CREATED",
+              "stampCreated": "2023-10-30 23:10:37",
+              "stampModified": "2023-10-30 23:10:37"
+            }
+          ],
+          "id": 2,
+          "userRole": "CUSTOMER",
+          "name": "Customer",
+          "phone": "123123",
+          "email": "customer@abv.bg",
+          "username": "customer",
+          "password": "customer"
+        },
+        "orderId": 6,
+        "orderType": "SELL",
+        "paymentMethod": "CARD",
+        "orderItems": [
+          {
+            "item": {
+              "itemId": 2,
+              "itemName": "Moreni",
+              "itemManufacturer": "Moreni LtD.",
+              "itemCountryOfOrigin": "Bulgaria",
+              "itemDescription": "Vafla",
+              "itemCategory": "FOOD_GROCERIES",
+              "itemQuantity": 20,
+              "itemPrice": 2.39,
+              "groceryType": "SNACKS",
+              "expirationDate": "2023-12-12"
+            },
+            "quantity": 3
+          }
+        ],
+        "orderStatus": "CREATED",
+        "stampCreated": "2023-10-30 23:11:00",
+        "stampModified": "2023-10-30 23:11:00"
+      },
+      {
+        "customer": {
+          "userCart": [],
+          "orderHistory": [
+            null,
+            {
+              "customer": {
+                "userCart": [],
+                "orderHistory": [
+                  null
+                ],
+                "id": 2,
+                "userRole": "CUSTOMER",
+                "name": "Customer",
+                "phone": "123123",
+                "email": "customer@abv.bg",
+                "username": "customer",
+                "password": "customer"
+              },
+              "orderId": 5,
+              "orderType": "SELL",
+              "paymentMethod": "CARD",
+              "orderItems": [
+                {
+                  "item": {
+                    "itemId": 1,
+                    "itemName": "Samsung L50",
+                    "itemManufacturer": "Samsung",
+                    "itemCountryOfOrigin": "China",
+                    "itemDescription": "Newest smartphone",
+                    "itemCategory": "ELECTRONICS",
+                    "itemQuantity": 9,
+                    "itemPrice": 699.99,
+                    "electronicsType": "SMARTPHONE",
+                    "warranty": 9
+                  },
+                  "quantity": 3
+                }
+              ],
+              "orderStatus": "CREATED",
+              "stampCreated": "2023-10-30 23:10:37",
+              "stampModified": "2023-10-30 23:10:37"
+            },
+            {
+              "customer": {
+                "userCart": [],
+                "orderHistory": [
+                  null,
+                  {
+                    "customer": {
+                      "userCart": [],
+                      "orderHistory": [
+                        null
+                      ],
+                      "id": 2,
+                      "userRole": "CUSTOMER",
+                      "name": "Customer",
+                      "phone": "123123",
+                      "email": "customer@abv.bg",
+                      "username": "customer",
+                      "password": "customer"
+                    },
+                    "orderId": 5,
+                    "orderType": "SELL",
+                    "paymentMethod": "CARD",
+                    "orderItems": [
+                      {
+                        "item": {
+                          "itemId": 1,
+                          "itemName": "Samsung L50",
+                          "itemManufacturer": "Samsung",
+                          "itemCountryOfOrigin": "China",
+                          "itemDescription": "Newest smartphone",
+                          "itemCategory": "ELECTRONICS",
+                          "itemQuantity": 9,
+                          "itemPrice": 699.99,
+                          "electronicsType": "SMARTPHONE",
+                          "warranty": 9
+                        },
+                        "quantity": 3
+                      }
+                    ],
+                    "orderStatus": "CREATED",
+                    "stampCreated": "2023-10-30 23:10:37",
+                    "stampModified": "2023-10-30 23:10:37"
+                  }
+                ],
+                "id": 2,
+                "userRole": "CUSTOMER",
+                "name": "Customer",
+                "phone": "123123",
+                "email": "customer@abv.bg",
+                "username": "customer",
+                "password": "customer"
+              },
+              "orderId": 6,
+              "orderType": "SELL",
+              "paymentMethod": "CARD",
+              "orderItems": [
+                {
+                  "item": {
+                    "itemId": 2,
+                    "itemName": "Moreni",
+                    "itemManufacturer": "Moreni LtD.",
+                    "itemCountryOfOrigin": "Bulgaria",
+                    "itemDescription": "Vafla",
+                    "itemCategory": "FOOD_GROCERIES",
+                    "itemQuantity": 20,
+                    "itemPrice": 2.39,
+                    "groceryType": "SNACKS",
+                    "expirationDate": "2023-12-12"
+                  },
+                  "quantity": 3
+                }
+              ],
+              "orderStatus": "CREATED",
+              "stampCreated": "2023-10-30 23:11:00",
+              "stampModified": "2023-10-30 23:11:00"
+            }
+          ],
+          "id": 2,
+          "userRole": "CUSTOMER",
+          "name": "Customer",
+          "phone": "123123",
+          "email": "customer@abv.bg",
+          "username": "customer",
+          "password": "customer"
+        },
+        "orderId": 7,
+        "orderType": "SELL",
+        "paymentMethod": "CARD",
+        "orderItems": [
+          {
+            "item": {
+              "itemId": 2,
+              "itemName": "Moreni",
+              "itemManufacturer": "Moreni LtD.",
+              "itemCountryOfOrigin": "Bulgaria",
+              "itemDescription": "Vafla",
+              "itemCategory": "FOOD_GROCERIES",
+              "itemQuantity": 20,
+              "itemPrice": 2.39,
+              "groceryType": "SNACKS",
+              "expirationDate": "2023-12-12"
+            },
+            "quantity": 123
+          },
+          {
+            "item": {
+              "itemId": 1,
+              "itemName": "Samsung L50",
+              "itemManufacturer": "Samsung",
+              "itemCountryOfOrigin": "China",
+              "itemDescription": "Newest smartphone",
+              "itemCategory": "ELECTRONICS",
+              "itemQuantity": 9,
+              "itemPrice": 699.99,
+              "electronicsType": "SMARTPHONE",
+              "warranty": 9
+            },
+            "quantity": 12
+          }
+        ],
+        "orderStatus": "CREATED",
+        "stampCreated": "2023-10-30 23:11:18",
+        "stampModified": "2023-10-30 23:11:18"
+      }
+    ],
     "id": 2,
     "userRole": "CUSTOMER",
     "name": "Customer",
-    "phone": "+359888656454",
-    "email": "customer@customer.com",
+    "phone": "123123",
+    "email": "customer@abv.bg",
     "username": "customer",
     "password": "customer"
-  },
-  {
-    "isAdmin": false,
-    "id": 3,
-    "userRole": "EMPLOYEE",
-    "name": "Pesho",
-    "phone": "1238109231",
-    "email": "pesho@abv.bg",
-    "username": "pesho",
-    "password": "pesho"
-  },
-  {
-    "isAdmin": false,
-    "id": 4,
-    "userRole": "EMPLOYEE",
-    "name": "Todor",
-    "phone": "102499104",
-    "email": "todor@abv.bg",
-    "username": "todor",
-    "password": "todor"
-  },
-  {
-    "orderHistory": [],
-    "id": 5,
-    "userRole": "CUSTOMER",
-    "name": "Dobrin Rashkov",
-    "phone": "+359888333222",
-    "email": "dobrin@abv.bg",
-    "username": "dobrin",
-    "password": "dobrin"
   }
 ]

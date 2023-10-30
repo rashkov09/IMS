@@ -6,22 +6,22 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import data.gson.util.CommonExtract;
 import model.enums.order.OrderStatus;
 import model.enums.order.OrderType;
 import model.enums.payment.PaymentMethod;
-import model.iface.Item;
-import model.impl.item.InventoryItem;
 import model.impl.order.BuyOrder;
 import model.impl.order.InventoryOrder;
 import model.impl.order.OrderItemLine;
+import model.impl.order.SellOrder;
 import model.impl.supplier.ItemSupplier;
+import model.impl.user.CustomerUser;
 import model.impl.user.EmployeeUser;
 import model.impl.user.User;
 
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDeserializer implements JsonDeserializer<InventoryOrder> {
@@ -40,14 +40,8 @@ public class OrderDeserializer implements JsonDeserializer<InventoryOrder> {
 		Long orderId = jsonObject.get("orderId").getAsLong();
 		OrderType orderType = OrderType.valueOf(jsonObject.get("orderType").getAsString());
 		PaymentMethod paymentMethod = PaymentMethod.valueOf(jsonObject.get("paymentMethod").getAsString());
-		List<OrderItemLine> items = new ArrayList<>();
 		JsonArray itemsArray = jsonObject.getAsJsonArray("orderItems");
-		for (JsonElement itemElement : itemsArray) {
-			JsonObject itemObject = itemElement.getAsJsonObject();
-			InventoryItem item = context.deserialize(itemObject.get("item"), InventoryItem.class);
-			int quantity = itemObject.get("quantity").getAsInt();
-			items.add(new OrderItemLine(item, quantity));
-		}
+		List<OrderItemLine> items = CommonExtract.getListOfOrderItemsFromJson(context, itemsArray);
 
 		switch (orderType) {
 			case BUY -> {
@@ -57,7 +51,8 @@ public class OrderDeserializer implements JsonDeserializer<InventoryOrder> {
 				                    itemSupplier, user);
 			}
 			case SELL -> {
-				return null;
+				User user = context.deserialize(jsonObject.get("customer"), CustomerUser.class);
+				return new SellOrder(items,orderStatus,stampCreated,stampModified,orderId,orderType,paymentMethod,user);
 			}
 			default -> throw new JsonParseException("Error");
 		}

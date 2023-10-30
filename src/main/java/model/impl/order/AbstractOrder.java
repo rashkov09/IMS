@@ -11,7 +11,7 @@ import java.util.List;
 
 public abstract class AbstractOrder implements Order {
 
-	private final List<OrderItemLine> orderItems;
+	private List<OrderItemLine> orderItems;
 	private OrderStatus orderStatus;
 	private final LocalDateTime stampCreated;
 	private LocalDateTime stampModified;
@@ -33,6 +33,10 @@ public abstract class AbstractOrder implements Order {
 
 	public List<OrderItemLine> getOrderItems() {
 		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderItemLine> orderItems) {
+		this.orderItems = orderItems;
 	}
 
 	public OrderStatus getOrderStatus() {
