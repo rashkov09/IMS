@@ -1,12 +1,12 @@
 [
   {
     "customer": {
-      "userCart": [],
       "orderHistory": [],
+      "userCart": [],
       "id": 2,
       "userRole": "CUSTOMER",
       "name": "Customer",
-      "phone": "123123",
+      "phone": "34917452134",
       "email": "customer@abv.bg",
       "username": "customer",
       "password": "customer"
@@ -28,36 +28,58 @@
           "electronicsType": "SMARTPHONE",
           "warranty": 9
         },
-        "quantity": 1
-      },
-      {
-        "item": {
-          "itemId": 2,
-          "itemName": "Moreni",
-          "itemManufacturer": "Moreni LtD.",
-          "itemCountryOfOrigin": "Bulgaria",
-          "itemDescription": "Vafla",
-          "itemCategory": "FOOD_GROCERIES",
-          "itemQuantity": 20,
-          "itemPrice": 2.39,
-          "groceryType": "SNACKS",
-          "expirationDate": "2023-12-12"
-        },
-        "quantity": 23
+        "quantity": 12
       }
     ],
-    "orderStatus": "CREATED",
-    "stampCreated": "2023-10-30 22:57:50",
-    "stampModified": "2023-10-30 22:57:50"
+    "orderStatus": "CANCELED",
+    "stampCreated": "2023-10-31 00:59:21",
+    "stampModified": "2023-10-31 01:17:27"
   },
   {
     "customer": {
+      "orderHistory": [
+        {
+          "customer": {
+            "orderHistory": [],
+            "userCart": [],
+            "id": 2,
+            "userRole": "CUSTOMER",
+            "name": "Customer",
+            "phone": "34917452134",
+            "email": "customer@abv.bg",
+            "username": "customer",
+            "password": "customer"
+          },
+          "orderId": 1,
+          "orderType": "SELL",
+          "paymentMethod": "CARD",
+          "orderItems": [
+            {
+              "item": {
+                "itemId": 1,
+                "itemName": "Samsung L50",
+                "itemManufacturer": "Samsung",
+                "itemCountryOfOrigin": "China",
+                "itemDescription": "Newest smartphone",
+                "itemCategory": "ELECTRONICS",
+                "itemQuantity": 9,
+                "itemPrice": 699.99,
+                "electronicsType": "SMARTPHONE",
+                "warranty": 9
+              },
+              "quantity": 12
+            }
+          ],
+          "orderStatus": "CANCELED",
+          "stampCreated": "2023-10-31 00:59:21",
+          "stampModified": "2023-10-31 01:17:27"
+        }
+      ],
       "userCart": [],
-      "orderHistory": [],
       "id": 2,
       "userRole": "CUSTOMER",
       "name": "Customer",
-      "phone": "123123",
+      "phone": "34917452134",
       "email": "customer@abv.bg",
       "username": "customer",
       "password": "customer"
@@ -79,364 +101,11 @@
           "electronicsType": "SMARTPHONE",
           "warranty": 9
         },
-        "quantity": 12
+        "quantity": 2
       }
     ],
-    "orderStatus": "CREATED",
-    "stampCreated": "2023-10-30 23:02:19",
-    "stampModified": "2023-10-30 23:02:19"
-  },
-  {
-    "customer": {
-      "userCart": [],
-      "orderHistory": [],
-      "id": 2,
-      "userRole": "CUSTOMER",
-      "name": "Customer",
-      "phone": "123123",
-      "email": "customer@abv.bg",
-      "username": "customer",
-      "password": "customer"
-    },
-    "orderId": 3,
-    "orderType": "SELL",
-    "paymentMethod": "CARD",
-    "orderItems": [
-      {
-        "item": {
-          "itemId": 2,
-          "itemName": "Moreni",
-          "itemManufacturer": "Moreni LtD.",
-          "itemCountryOfOrigin": "Bulgaria",
-          "itemDescription": "Vafla",
-          "itemCategory": "FOOD_GROCERIES",
-          "itemQuantity": 20,
-          "itemPrice": 2.39,
-          "groceryType": "SNACKS",
-          "expirationDate": "2023-12-12"
-        },
-        "quantity": 13
-      }
-    ],
-    "orderStatus": "CREATED",
-    "stampCreated": "2023-10-30 23:04:12",
-    "stampModified": "2023-10-30 23:04:12"
-  },
-  {
-    "customer": {
-      "userCart": [],
-      "orderHistory": [],
-      "id": 2,
-      "userRole": "CUSTOMER",
-      "name": "Customer",
-      "phone": "123123",
-      "email": "customer@abv.bg",
-      "username": "customer",
-      "password": "customer"
-    },
-    "orderId": 4,
-    "orderType": "SELL",
-    "paymentMethod": "CARD",
-    "orderItems": [
-      {
-        "item": {
-          "itemId": 1,
-          "itemName": "Samsung L50",
-          "itemManufacturer": "Samsung",
-          "itemCountryOfOrigin": "China",
-          "itemDescription": "Newest smartphone",
-          "itemCategory": "ELECTRONICS",
-          "itemQuantity": 9,
-          "itemPrice": 699.99,
-          "electronicsType": "SMARTPHONE",
-          "warranty": 9
-        },
-        "quantity": 12
-      }
-    ],
-    "orderStatus": "CREATED",
-    "stampCreated": "2023-10-30 23:08:12",
-    "stampModified": "2023-10-30 23:08:12"
-  },
-  {
-    "customer": {
-      "userCart": [],
-      "orderHistory": [
-        null
-      ],
-      "id": 2,
-      "userRole": "CUSTOMER",
-      "name": "Customer",
-      "phone": "123123",
-      "email": "customer@abv.bg",
-      "username": "customer",
-      "password": "customer"
-    },
-    "orderId": 5,
-    "orderType": "SELL",
-    "paymentMethod": "CARD",
-    "orderItems": [
-      {
-        "item": {
-          "itemId": 1,
-          "itemName": "Samsung L50",
-          "itemManufacturer": "Samsung",
-          "itemCountryOfOrigin": "China",
-          "itemDescription": "Newest smartphone",
-          "itemCategory": "ELECTRONICS",
-          "itemQuantity": 9,
-          "itemPrice": 699.99,
-          "electronicsType": "SMARTPHONE",
-          "warranty": 9
-        },
-        "quantity": 3
-      }
-    ],
-    "orderStatus": "CREATED",
-    "stampCreated": "2023-10-30 23:10:37",
-    "stampModified": "2023-10-30 23:10:37"
-  },
-  {
-    "customer": {
-      "userCart": [],
-      "orderHistory": [
-        null,
-        {
-          "customer": {
-            "userCart": [],
-            "orderHistory": [
-              null
-            ],
-            "id": 2,
-            "userRole": "CUSTOMER",
-            "name": "Customer",
-            "phone": "123123",
-            "email": "customer@abv.bg",
-            "username": "customer",
-            "password": "customer"
-          },
-          "orderId": 5,
-          "orderType": "SELL",
-          "paymentMethod": "CARD",
-          "orderItems": [
-            {
-              "item": {
-                "itemId": 1,
-                "itemName": "Samsung L50",
-                "itemManufacturer": "Samsung",
-                "itemCountryOfOrigin": "China",
-                "itemDescription": "Newest smartphone",
-                "itemCategory": "ELECTRONICS",
-                "itemQuantity": 9,
-                "itemPrice": 699.99,
-                "electronicsType": "SMARTPHONE",
-                "warranty": 9
-              },
-              "quantity": 3
-            }
-          ],
-          "orderStatus": "CREATED",
-          "stampCreated": "2023-10-30 23:10:37",
-          "stampModified": "2023-10-30 23:10:37"
-        }
-      ],
-      "id": 2,
-      "userRole": "CUSTOMER",
-      "name": "Customer",
-      "phone": "123123",
-      "email": "customer@abv.bg",
-      "username": "customer",
-      "password": "customer"
-    },
-    "orderId": 6,
-    "orderType": "SELL",
-    "paymentMethod": "CARD",
-    "orderItems": [
-      {
-        "item": {
-          "itemId": 2,
-          "itemName": "Moreni",
-          "itemManufacturer": "Moreni LtD.",
-          "itemCountryOfOrigin": "Bulgaria",
-          "itemDescription": "Vafla",
-          "itemCategory": "FOOD_GROCERIES",
-          "itemQuantity": 20,
-          "itemPrice": 2.39,
-          "groceryType": "SNACKS",
-          "expirationDate": "2023-12-12"
-        },
-        "quantity": 3
-      }
-    ],
-    "orderStatus": "CREATED",
-    "stampCreated": "2023-10-30 23:11:00",
-    "stampModified": "2023-10-30 23:11:00"
-  },
-  {
-    "customer": {
-      "userCart": [],
-      "orderHistory": [
-        null,
-        {
-          "customer": {
-            "userCart": [],
-            "orderHistory": [
-              null
-            ],
-            "id": 2,
-            "userRole": "CUSTOMER",
-            "name": "Customer",
-            "phone": "123123",
-            "email": "customer@abv.bg",
-            "username": "customer",
-            "password": "customer"
-          },
-          "orderId": 5,
-          "orderType": "SELL",
-          "paymentMethod": "CARD",
-          "orderItems": [
-            {
-              "item": {
-                "itemId": 1,
-                "itemName": "Samsung L50",
-                "itemManufacturer": "Samsung",
-                "itemCountryOfOrigin": "China",
-                "itemDescription": "Newest smartphone",
-                "itemCategory": "ELECTRONICS",
-                "itemQuantity": 9,
-                "itemPrice": 699.99,
-                "electronicsType": "SMARTPHONE",
-                "warranty": 9
-              },
-              "quantity": 3
-            }
-          ],
-          "orderStatus": "CREATED",
-          "stampCreated": "2023-10-30 23:10:37",
-          "stampModified": "2023-10-30 23:10:37"
-        },
-        {
-          "customer": {
-            "userCart": [],
-            "orderHistory": [
-              null,
-              {
-                "customer": {
-                  "userCart": [],
-                  "orderHistory": [
-                    null
-                  ],
-                  "id": 2,
-                  "userRole": "CUSTOMER",
-                  "name": "Customer",
-                  "phone": "123123",
-                  "email": "customer@abv.bg",
-                  "username": "customer",
-                  "password": "customer"
-                },
-                "orderId": 5,
-                "orderType": "SELL",
-                "paymentMethod": "CARD",
-                "orderItems": [
-                  {
-                    "item": {
-                      "itemId": 1,
-                      "itemName": "Samsung L50",
-                      "itemManufacturer": "Samsung",
-                      "itemCountryOfOrigin": "China",
-                      "itemDescription": "Newest smartphone",
-                      "itemCategory": "ELECTRONICS",
-                      "itemQuantity": 9,
-                      "itemPrice": 699.99,
-                      "electronicsType": "SMARTPHONE",
-                      "warranty": 9
-                    },
-                    "quantity": 3
-                  }
-                ],
-                "orderStatus": "CREATED",
-                "stampCreated": "2023-10-30 23:10:37",
-                "stampModified": "2023-10-30 23:10:37"
-              }
-            ],
-            "id": 2,
-            "userRole": "CUSTOMER",
-            "name": "Customer",
-            "phone": "123123",
-            "email": "customer@abv.bg",
-            "username": "customer",
-            "password": "customer"
-          },
-          "orderId": 6,
-          "orderType": "SELL",
-          "paymentMethod": "CARD",
-          "orderItems": [
-            {
-              "item": {
-                "itemId": 2,
-                "itemName": "Moreni",
-                "itemManufacturer": "Moreni LtD.",
-                "itemCountryOfOrigin": "Bulgaria",
-                "itemDescription": "Vafla",
-                "itemCategory": "FOOD_GROCERIES",
-                "itemQuantity": 20,
-                "itemPrice": 2.39,
-                "groceryType": "SNACKS",
-                "expirationDate": "2023-12-12"
-              },
-              "quantity": 3
-            }
-          ],
-          "orderStatus": "CREATED",
-          "stampCreated": "2023-10-30 23:11:00",
-          "stampModified": "2023-10-30 23:11:00"
-        }
-      ],
-      "id": 2,
-      "userRole": "CUSTOMER",
-      "name": "Customer",
-      "phone": "123123",
-      "email": "customer@abv.bg",
-      "username": "customer",
-      "password": "customer"
-    },
-    "orderId": 7,
-    "orderType": "SELL",
-    "paymentMethod": "CARD",
-    "orderItems": [
-      {
-        "item": {
-          "itemId": 2,
-          "itemName": "Moreni",
-          "itemManufacturer": "Moreni LtD.",
-          "itemCountryOfOrigin": "Bulgaria",
-          "itemDescription": "Vafla",
-          "itemCategory": "FOOD_GROCERIES",
-          "itemQuantity": 20,
-          "itemPrice": 2.39,
-          "groceryType": "SNACKS",
-          "expirationDate": "2023-12-12"
-        },
-        "quantity": 123
-      },
-      {
-        "item": {
-          "itemId": 1,
-          "itemName": "Samsung L50",
-          "itemManufacturer": "Samsung",
-          "itemCountryOfOrigin": "China",
-          "itemDescription": "Newest smartphone",
-          "itemCategory": "ELECTRONICS",
-          "itemQuantity": 9,
-          "itemPrice": 699.99,
-          "electronicsType": "SMARTPHONE",
-          "warranty": 9
-        },
-        "quantity": 12
-      }
-    ],
-    "orderStatus": "CREATED",
-    "stampCreated": "2023-10-30 23:11:18",
-    "stampModified": "2023-10-30 23:11:18"
+    "orderStatus": "CANCELED",
+    "stampCreated": "2023-10-31 01:22:49",
+    "stampModified": "2023-10-31 01:23:35"
   }
 ]

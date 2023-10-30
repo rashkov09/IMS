@@ -54,6 +54,7 @@ public class UserData implements Data<User> {
 		                          .orElse(null);
 	}
 
+	@Override
 	public void update(List<User> users) {
 		userPersistenceUnit.save(users);
 	}

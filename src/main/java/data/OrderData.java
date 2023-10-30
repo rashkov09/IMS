@@ -41,4 +41,9 @@ public class OrderData implements Data<InventoryOrder> {
 	public List<InventoryOrder> getAll() {
 		return orderPersistenceUnit.fetchAll(typeToken);
 	}
+
+	@Override
+	public void update(List<InventoryOrder> list) {
+		orderPersistenceUnit.save(list);
+	}
 }

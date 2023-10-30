@@ -19,7 +19,7 @@ public class CustomerView implements ConsoleView {
 	private static final UserService userService = new UserServiceImpl();
 	private static final ItemService itemService = new ItemServiceImpl();
 	private static final OrderService orderService = new OrderServiceImpl();
-	private static final int MAX_CHOICE = 5;
+	private static final int MAX_CHOICE = 7;
 	private static final int MIN_CHOICE = 0;
 	private static final String MENU_STRING = """
                                             Please, choose an option to continue:
@@ -28,8 +28,9 @@ public class CustomerView implements ConsoleView {
                                             3. Add item to cart
                                             4. Display items in cart
                                             5. Add order
-                                            6. Search
-	                                                                                   
+                                            6. Cancel order
+                                            7. Search
+	                                                                                  
                                             0. Logout
                                             """;
 
@@ -62,12 +63,29 @@ public class CustomerView implements ConsoleView {
 			}
 			case 5 -> {
 				InventoryOrder inventoryOrder = orderService.addOrder(customer);
-				if (inventoryOrder != null){
-					userService.addOrderToHistory(customer,inventoryOrder);
+				if (inventoryOrder != null) {
+					userService.addOrderToHistory(customer, inventoryOrder);
 				}
 				this.showMenu(this, userService.getUpdatedUser(customer));
 			}
 			case 6 -> {
+				if (customer.displayOrderHistory().isEmpty()) {
+					System.out.println("You do not have any active orders!");
+					this.showMenu(invoker, customer);
+					break;
+				}
+				System.out.println(customer.displayOrderHistory());
+				System.out.println("Please, insert order ID to cancel:");
+				long orderId = ConsoleReader.readILong();
+				if (orderService.cancelOrder(orderId)) {
+					userService.updateOrderHistory(customer, orderId);
+					System.out.printf("Order with id %d is canceled!\n", orderId);
+				} else {
+					System.out.println("Order cancellation failed!");
+				}
+				this.showMenu(this, userService.getUpdatedUser(customer));
+			}
+			case 7 -> {
 				ItemSearchView itemSearchView = new ItemSearchView();
 				itemSearchView.showMenu(this, customer);
 			}

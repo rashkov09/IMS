@@ -1,5 +1,6 @@
 package model.impl.user;
 
+import model.enums.order.OrderStatus;
 import model.enums.user.UserRole;
 import model.impl.order.InventoryOrder;
 import model.impl.order.OrderItemLine;
@@ -11,8 +12,8 @@ import static constant.Shared.HORIZONTAL_LINE_BREAK;
 
 public class CustomerUser extends User {
 
-	private  List<OrderItemLine> userCart;
 	private  List<InventoryOrder> orderHistory;
+	private List<OrderItemLine> userCart;
 
 	public CustomerUser(
 		String name, String phone, String email, String username, String password, Long id, UserRole userRole) {
@@ -20,8 +21,10 @@ public class CustomerUser extends User {
 		this.orderHistory = new ArrayList<>();
 		this.userCart = new ArrayList<>();
 	}
+
 	public CustomerUser(
-		String name, String phone, String email, String username, String password, Long id, UserRole userRole,List<OrderItemLine> userCart, List<InventoryOrder> orderHistory) {
+		String name, String phone, String email, String username, String password, Long id, UserRole userRole,
+		List<OrderItemLine> userCart, List<InventoryOrder> orderHistory) {
 		super(name, phone, email, username, password, id, userRole);
 		this.orderHistory = orderHistory;
 		this.userCart = userCart;
@@ -52,6 +55,14 @@ public class CustomerUser extends User {
 	@Override
 	public String toString() {
 		return super.toString() + String.format(" Orders: %d\n", this.getOrderHistory().size());
+	}
+
+	public String displayOrderHistory() {
+		StringBuilder builder = new StringBuilder();
+		this.getOrderHistory().stream().filter(order -> order.getOrderStatus().equals(OrderStatus.CREATED) ||
+		                                                order.getOrderStatus().equals(OrderStatus.PENDING_PAYMENT)).forEach(
+			order -> builder.append(HORIZONTAL_LINE_BREAK).append(order.printOrder()).append(System.lineSeparator()));
+		return builder.toString();
 	}
 
 	public void setOrderHistory(List<InventoryOrder> orderHistory) {

@@ -1,5 +1,7 @@
 package data;
 
+import model.impl.order.InventoryOrder;
+
 import java.util.List;
 
 public interface Data<T> {
@@ -10,4 +12,5 @@ public interface Data<T> {
 	Long getLastId();
 	List<T> getAll();
 
+	void update(List<T> list);
 }

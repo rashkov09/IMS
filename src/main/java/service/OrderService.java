@@ -9,4 +9,5 @@ public interface OrderService {
 	String removeOrderById();
 	String displayAllOrders();
 
+	boolean cancelOrder(long orderId);
 }

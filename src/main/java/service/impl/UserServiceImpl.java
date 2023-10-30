@@ -1,6 +1,7 @@
 package service.impl;
 
 import data.UserData;
+import model.enums.order.OrderStatus;
 import model.enums.user.UserRole;
 import model.impl.order.InventoryOrder;
 import model.impl.order.OrderItemLine;
@@ -10,9 +11,11 @@ import model.impl.user.User;
 import service.UserService;
 import util.ConsoleReader;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import static constant.Shared.HORIZONTAL_LINE_BREAK;
 
@@ -164,7 +167,7 @@ public class UserServiceImpl implements UserService {
 			                                  if (currentUser.getId().equals(user.getId())) {
 				                                  CustomerUser updatedCustomer = (CustomerUser) currentUser;
 				                                  updatedCustomer.getOrderHistory().add(inventoryOrder);
-																					updatedCustomer.setUserCart(new ArrayList<>());
+				                                  updatedCustomer.setUserCart(new ArrayList<>());
 				                                  return updatedCustomer;
 			                                  }
 			                                  return currentUser;
@@ -172,5 +175,22 @@ public class UserServiceImpl implements UserService {
 		                                  .toList();
 		userData.update(updatedUsers);
 		return "Order added successfully!";
+	}
+
+	@Override
+	public void updateOrderHistory(CustomerUser customer, long orderId) {
+		List<User> updatedUsers = userData.getAll().stream().map(user -> {
+			if (user.getId().equals(customer.getId())) {
+				customer.setOrderHistory(customer.getOrderHistory().stream().peek(order -> {
+					if (order.getOrderId().equals(orderId)) {
+						order.setOrderStatus(OrderStatus.CANCELED);
+						order.setStampModified(LocalDateTime.now());
+					}
+				}).collect(Collectors.toList()));
+				return customer;
+			}
+			return user;
+		}).toList();
+		userData.update(updatedUsers);
 	}
 }

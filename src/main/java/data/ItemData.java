@@ -47,6 +47,11 @@ public class ItemData implements Data<InventoryItem> {
 	}
 
 	@Override
+	public void update(List<InventoryItem> list) {
+		itemPersistenceUnit.save(list);
+	}
+
+	@Override
 	public boolean removeById(Long itemId) {
 		List<InventoryItem> items = itemPersistenceUnit.fetchAll(typeToken);
 		if (items.removeIf(inventoryItem -> inventoryItem.getItemId().equals(itemId))) {

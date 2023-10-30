@@ -2,6 +2,7 @@ package service;
 
 import model.impl.order.InventoryOrder;
 import model.impl.order.OrderItemLine;
+import model.impl.user.CustomerUser;
 import model.impl.user.User;
 
 public interface UserService {
@@ -25,4 +26,6 @@ public interface UserService {
 	User getUpdatedUser(User user);
 
 	String addOrderToHistory(User user, InventoryOrder inventoryOrder);
+
+	void updateOrderHistory(CustomerUser customer, long orderId);
 }

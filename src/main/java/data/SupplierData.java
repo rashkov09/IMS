@@ -45,6 +45,11 @@ public class SupplierData  implements Data<ItemSupplier> {
 		return supplierPersistenceUnit.fetchAll(typeToken);
 	}
 
+	@Override
+	public void update(List<ItemSupplier> list) {
+		supplierPersistenceUnit.save(list);
+	}
+
 	public boolean addItemToSupplier(long supplierId, InventoryItem item) {
 		if (this.getById(supplierId) == null) {
 			throw new RuntimeException("Supplier not found!");
