@@ -8,8 +8,11 @@ import data.gson.date.LocalDateTimeDeserializer;
 import data.gson.date.LocalDateTimeSerializer;
 import data.gson.item.ItemDeserializer;
 import data.gson.item.ItemSerializer;
+import data.gson.order.OrderDeserializer;
+import data.gson.order.OrderSerializer;
 import data.gson.user.UserDeserializer;
 import model.impl.item.InventoryItem;
+import model.impl.order.InventoryOrder;
 import model.impl.user.User;
 
 import java.time.LocalDate;
@@ -25,6 +28,8 @@ public final class GsonFactory {
 		gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
 		gsonBuilder.registerTypeAdapter(InventoryItem.class, new ItemDeserializer());
 		gsonBuilder.registerTypeAdapter(InventoryItem.class, new ItemSerializer());
+		// gsonBuilder.registerTypeAdapter(InventoryOrder.class, new OrderSerializer());
+		gsonBuilder.registerTypeAdapter(InventoryOrder.class, new OrderDeserializer());
 		gsonBuilder.registerTypeAdapter(User.class, new UserDeserializer());
 		gsonBuilder.setPrettyPrinting();
 

@@ -1,15 +1,21 @@
 package service.impl;
 
 import data.UserData;
+import model.enums.order.OrderStatus;
 import model.enums.user.UserRole;
+import model.impl.order.InventoryOrder;
+import model.impl.order.OrderItemLine;
 import model.impl.user.CustomerUser;
 import model.impl.user.EmployeeUser;
 import model.impl.user.User;
 import service.UserService;
 import util.ConsoleReader;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import static constant.Shared.HORIZONTAL_LINE_BREAK;
 
@@ -26,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			User user = userData.getByUsernameAndPassword(username, password);
 			if (user == null) {
-				throw new RuntimeException("User not found");
+				throw new RuntimeException("Wrong username or password!");
 			}
 			return user;
 		} catch (Exception e) {
@@ -84,9 +90,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String displayAllUsers() {
 		StringBuilder builder = new StringBuilder();
-		userData.getAll().forEach(user -> {
-			builder.append(HORIZONTAL_LINE_BREAK).append(user.toString()).append(System.lineSeparator());
-		});
+		userData.getAll().forEach(
+			user -> builder.append(HORIZONTAL_LINE_BREAK).append(user.toString()).append(System.lineSeparator()));
 		return builder.toString();
 	}
 
@@ -108,7 +113,7 @@ public class UserServiceImpl implements UserService {
 					if (answer.equals("y")) {
 						users.stream().filter(user -> user.getUserRole().equals(UserRole.EMPLOYEE) && user.getId().equals(id))
 						     .map(u -> (EmployeeUser) u).findFirst().ifPresent(user -> user.setAdmin(false));
-						userData.save(users);
+						userData.update(users);
 						result = String.format("ADMIN status deactivated for userId: %d", id);
 					}
 				}
@@ -118,7 +123,7 @@ public class UserServiceImpl implements UserService {
 					if (answer.equals("y")) {
 						users.stream().filter(user -> user.getUserRole().equals(UserRole.EMPLOYEE) && user.getId().equals(id))
 						     .map(u -> (EmployeeUser) u).findFirst().ifPresent(user -> user.setAdmin(true));
-						userData.save(users);
+						userData.update(users);
 						result = String.format("ADMIN status activated for userId: %d", id);
 					}
 				}
@@ -132,5 +137,59 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void displayUserProfile(User user) {
 		System.out.println(user.getProfileInfo());
+	}
+
+	@Override
+	public String addItemToCart(User user, OrderItemLine item) {
+		List<User> updatedUsers = userData.getAll().stream()
+		                                  .map(currentUser -> {
+			                                  if (currentUser.getId().equals(user.getId())) {
+				                                  CustomerUser updatedCustomer = (CustomerUser) currentUser;
+				                                  updatedCustomer.getUserCart().add(item);
+				                                  return updatedCustomer;
+			                                  }
+			                                  return currentUser;
+		                                  })
+		                                  .toList();
+		userData.update(updatedUsers);
+		return "Item added to cart!";
+	}
+
+	@Override
+	public User getUpdatedUser(User customer) {
+		return userData.getById(customer.getId());
+	}
+
+	@Override
+	public void addOrderToHistory(User user, InventoryOrder inventoryOrder) {
+		List<User> updatedUsers = userData.getAll().stream()
+		                                  .map(currentUser -> {
+			                                  if (currentUser.getId().equals(user.getId())) {
+				                                  CustomerUser updatedCustomer = (CustomerUser) currentUser;
+				                                  updatedCustomer.getOrderHistory().add(inventoryOrder);
+				                                  updatedCustomer.setUserCart(new ArrayList<>());
+				                                  return updatedCustomer;
+			                                  }
+			                                  return currentUser;
+		                                  })
+		                                  .toList();
+		userData.update(updatedUsers);
+	}
+
+	@Override
+	public void updateOrderHistory(CustomerUser customer, long orderId) {
+		List<User> updatedUsers = userData.getAll().stream().map(user -> {
+			if (user.getId().equals(customer.getId())) {
+				customer.setOrderHistory(customer.getOrderHistory().stream().peek(order -> {
+					if (order.getOrderId().equals(orderId)) {
+						order.setOrderStatus(OrderStatus.CANCELED);
+						order.setStampModified(LocalDateTime.now());
+					}
+				}).collect(Collectors.toList()));
+				return customer;
+			}
+			return user;
+		}).toList();
+		userData.update(updatedUsers);
 	}
 }

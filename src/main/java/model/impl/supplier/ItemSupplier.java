@@ -6,13 +6,14 @@ import model.impl.item.InventoryItem;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static constant.Shared.HORIZONTAL_LINE_BREAK;
 
 public class ItemSupplier {
 
 	private final List<InventoryItem> items;
-	private Long supplierId;
+	private final Long supplierId;
 	private String supplierName;
 	private String supplierEmail;
 	private String supplierPhone;
@@ -40,9 +41,6 @@ public class ItemSupplier {
 		return supplierId;
 	}
 
-	public void setSupplierId(Long supplierId) {
-		this.supplierId = supplierId;
-	}
 
 	public String getSupplierName() {
 		return supplierName;
@@ -109,8 +107,7 @@ public class ItemSupplier {
 		return this;
 	}
 
-	@Override
-	public String toString() {
+	public String getSupplierDetails() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(String.format("""
                                     Supplier ID: %d
@@ -121,7 +118,7 @@ public class ItemSupplier {
                                      Contract start date: %s
                                     Contract end date: %s
                                     Payment method: %s
-                                    Available items: 
+                                    Available items:
 		                              	
                                  """, this.getSupplierId(), this.getSupplierName(), this.getSupplierEmail(),
 		                             this.getSupplierPhone(),
@@ -130,5 +127,19 @@ public class ItemSupplier {
 		this.getItems()
 		    .forEach(item -> builder.append(HORIZONTAL_LINE_BREAK).append(item.getItemDetails()).append(System.lineSeparator()));
 		return builder.toString();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder  = new StringBuilder();
+		String itemIds = this.getItems().stream().map(InventoryItem::getItemId).toList().stream()
+		                     .map(Object::toString)
+		                     .collect(Collectors.joining(", "));
+		 builder.append(String.format("""
+                       Supplier ID: %d
+                       Supplier name: %s
+                       Available item IDs: %s
+                         """, this.getSupplierId(), this.getSupplierName(), itemIds));
+		 return builder.toString();
 	}
 }

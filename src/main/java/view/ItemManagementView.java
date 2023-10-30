@@ -10,17 +10,17 @@ public class ItemManagementView implements ConsoleView{
 	private static final int MAX_CHOICE = 4;
 	private static final int MIN_CHOICE = 0;
 	private static final String menuString = """
-	                                         <-- You are in Item management menu -->
+                                           <-- You are in Item management menu -->
 	                                                                                  
-	                                         Please, select an option to continue:
+                                           Please, select an option to continue:
 	                                                                                  
-	                                         1. Add item
-	                                         2. Remove item by ID
-	                                         3. Display all items
-	                                         4. Search
+                                           1. Add item
+                                           2. Remove item by ID
+                                           3. Display all items
+                                           4. Search
 	                                                                                  
-	                                         0. Back
-	                                          """;
+                                           0. Back
+                                            """;
 
 	@Override
 	public void showMenu(ConsoleView invoker, User user) {

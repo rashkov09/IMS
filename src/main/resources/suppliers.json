@@ -22,5 +22,29 @@
     "contractStart": "2023-12-01",
     "contractEnd": "2023-12-02",
     "paymentMethod": "BANK_TRANSFER"
+  },
+  {
+    "items": [
+      {
+        "itemId": 3,
+        "itemName": "Real feel sofa",
+        "itemManufacturer": "Can Bane LTD",
+        "itemCountryOfOrigin": "Israel",
+        "itemDescription": "Living room sofa",
+        "itemCategory": "FURNITURE",
+        "itemQuantity": 2,
+        "itemPrice": 3999.99,
+        "furnitureType": "SOFAS",
+        "deliveryPrice": 100.0
+      }
+    ],
+    "supplierId": 2,
+    "supplierName": "Sofas For All LTD",
+    "supplierEmail": "sofas@gmail.com",
+    "supplierPhone": "+65956465656",
+    "supplierAddress": "Montreal",
+    "contractStart": "2023-12-01",
+    "contractEnd": "2023-12-31",
+    "paymentMethod": "BANK_TRANSFER"
   }
 ]

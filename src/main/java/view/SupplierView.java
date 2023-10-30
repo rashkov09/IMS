@@ -12,17 +12,17 @@ public class SupplierView implements ConsoleView {
 	private static final int MAX_CHOICE = 6;
 	private static final int MIN_CHOICE = 0;
 	private static final String MENU_STRING = """
-	                                          <-- You are in Supplier menu --> 
-	                                          Please, choose an option to continue:
-	                                          1. Add supplier
-	                                          2. Add items to supplier
-	                                          3. Edit supplier
-	                                          4. Remove supplier
-	                                          5. Display all suppliers
-	                                          6. Search supplier by item id
+                                            <-- You are in Supplier menu -->
+                                            Please, choose an option to continue:
+                                            1. Add supplier
+                                            2. Add items to supplier
+                                            3. Edit supplier
+                                            4. Remove supplier
+                                            5. Display all suppliers
+                                            6. Search supplier by item id
 	                                                                                    
-	                                          0. Back
-	                                          """;
+                                            0. Back
+                                            """;
 
 	@Override
 	public void showMenu(ConsoleView invoker, User user) {
@@ -44,6 +44,7 @@ public class SupplierView implements ConsoleView {
 			}
 			case 3 -> {
 				// TODO add edit supplier functionality
+				this.showMenu(invoker,user);
 			}
 			case 4 -> {
 				System.out.println(itemSupplierService.removeSupplier());
