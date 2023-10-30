@@ -11,17 +11,17 @@ public class ItemSearchView implements ConsoleView{
 	private static final int MAX_CHOICE = 3;
 	private static final int MIN_CHOICE = 0;
 	private static final String menuString = """
-	                                         <-- You are in Item search menu -->
+                                           <-- You are in Item search menu -->
 	                                                                                  
-	                                         Please, select an option to continue:
+                                           Please, select an option to continue:
 	                                                                                  
-	                                         1. Search item by ID
-	                                         2. Search item by name
-	                                         3. Search item by category
+                                           1. Search item by ID
+                                           2. Search item by name
+                                           3. Search item by category
 	                                         
 	                                                                                  
-	                                         0. Back
-	                                          """;
+                                           0. Back
+                                            """;
 
 	@Override
 	public void showMenu(ConsoleView invoker, User user) {

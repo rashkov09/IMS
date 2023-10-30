@@ -10,16 +10,16 @@ public class PaymentManagementView implements ConsoleView{
 	private static final int MAX_CHOICE = 4;
 	private static final int MIN_CHOICE = 0;
 	private static final String MENU_STRING = """
-	                                         <-- You are in Payment management menu -->
+                                           <-- You are in Payment management menu -->
 	                                                                                  
-	                                         Please, select an option to continue:
+                                           Please, select an option to continue:
 	                                                                                  
-	                                         1. Process payment
-	                                         2. Display all payments
-	                                         3. Search
+                                           1. Process payment
+                                           2. Display all payments
+                                           3. Search
 	                                                                                  
-	                                         0. Back
-	                                          """;
+                                           0. Back
+                                            """;
 
 	@Override
 	public void showMenu(ConsoleView invoker, User user) {

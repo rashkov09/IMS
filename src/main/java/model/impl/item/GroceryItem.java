@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class GroceryItem extends InventoryItem{
 
-	private GroceryType groceryType;
+	private final GroceryType groceryType;
 	private LocalDate expirationDate;
 
 
@@ -25,10 +25,6 @@ public class GroceryItem extends InventoryItem{
 		return groceryType;
 	}
 
-	public void setGroceryType(GroceryType groceryType) {
-		this.groceryType = groceryType;
-	}
-
 	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
@@ -37,30 +33,21 @@ public class GroceryItem extends InventoryItem{
 		this.expirationDate = expirationDate;
 	}
 
-	@Override
-	public Boolean isPerishable() {
-		return true;
-	}
-
-	@Override
-	public void handlePerishedItem() {
-		this.setItemQuantity(0);
-	}
 
 	@Override
 	public String getItemDetails() {
 		return String.format("""
-		                       Item ID: %d
-		                       Item name: %s
-		                       Manufacturer: %s
-		                       Manufactured in: %s
-		                       Description: %s
-		                       Category: %s
-		                       Type: %s
-		                       Quantity: %d
-		                       Price: %.2f
-		                       Good before: %s
-		                     """, this.getItemId(), this.getItemName(), this.getItemManufacturer(),
+                           Item ID: %d
+                           Item name: %s
+                           Manufacturer: %s
+                           Manufactured in: %s
+                           Description: %s
+                           Category: %s
+                           Type: %s
+                           Quantity: %d
+                           Price: %.2f
+                           Good before: %s
+                         """, this.getItemId(), this.getItemName(), this.getItemManufacturer(),
 		                     this.getItemCountryOfOrigin(), this.getItemDescription(), this.getItemCategory(),
 		                     this.getGroceryType().getTypeName()
 			, this.getItemQuantity(), this.getItemPrice(), this.getExpirationDate().toString());

@@ -10,17 +10,17 @@ public class OrderManagementView implements ConsoleView{
 	private static final int MAX_CHOICE = 4;
 	private static final int MIN_CHOICE = 0;
 	private static final String menuString = """
-	                                         <-- You are in Order management menu -->
+                                           <-- You are in Order management menu -->
 	                                                                                  
-	                                         Please, select an option to continue:
+                                           Please, select an option to continue:
 	                                                                                  
-	                                         1. Add order
-	                                         2. Remove order by ID
-	                                         3. Display all orders
-	                                         4. Search
+                                           1. Add order
+                                           2. Remove order by ID
+                                           3. Display all orders
+                                           4. Search
 	                                                                                  
-	                                         0. Back
-	                                          """;
+                                           0. Back
+                                            """;
 
 	@Override
 	public void showMenu(ConsoleView invoker, User user) {

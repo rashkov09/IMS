@@ -11,16 +11,16 @@ import java.util.List;
 
 public abstract class AbstractOrder implements Order {
 
-	private List<OrderItemLine> orderItems;
+	private final List<OrderItemLine> orderItems;
 	private OrderStatus orderStatus;
-	private LocalDateTime stampCreated;
+	private final LocalDateTime stampCreated;
 	private LocalDateTime stampModified;
 
 	public AbstractOrder() {
 		this.orderItems = new ArrayList<>();
 		this.orderStatus = OrderStatus.CREATED;
 		this.stampCreated = LocalDateTime.now();
-		this.stampModified = LocalDateTime.now();;
+		this.stampModified = LocalDateTime.now();
 	}
 
 	public AbstractOrder(
@@ -35,10 +35,6 @@ public abstract class AbstractOrder implements Order {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<OrderItemLine> orderItems) {
-		this.orderItems = orderItems;
-	}
-
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
@@ -49,10 +45,6 @@ public abstract class AbstractOrder implements Order {
 
 	public LocalDateTime getStampCreated() {
 		return stampCreated;
-	}
-
-	public void setStampCreated(LocalDateTime stampCreated) {
-		this.stampCreated = stampCreated;
 	}
 
 	public LocalDateTime getStampModified() {

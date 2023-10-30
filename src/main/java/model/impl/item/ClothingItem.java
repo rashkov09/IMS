@@ -9,9 +9,9 @@ import java.math.BigDecimal;
 
 public class ClothingItem extends InventoryItem {
 
-	private ClothingType clothingType;
-	private ClothingSexCategory clothingSexCategory;
-	private ClothingSize clothingSize;
+	private final ClothingType clothingType;
+	private final ClothingSexCategory clothingSexCategory;
+	private final ClothingSize clothingSize;
 
 	public ClothingItem(
 		Long itemId, String itemName, String itemManufacturer, String itemCountryOfOrigin, String itemDescription,
@@ -27,41 +27,29 @@ public class ClothingItem extends InventoryItem {
 		return clothingType;
 	}
 
-	public void setClothingType(ClothingType clothingType) {
-		this.clothingType = clothingType;
-	}
-
 	public ClothingSexCategory getClothingSexCategory() {
 		return clothingSexCategory;
-	}
-
-	public void setClothingSexCategory(ClothingSexCategory clothingSexCategory) {
-		this.clothingSexCategory = clothingSexCategory;
 	}
 
 	public ClothingSize getClothingSize() {
 		return clothingSize;
 	}
 
-	public void setClothingSize(ClothingSize clothingSize) {
-		this.clothingSize = clothingSize;
-	}
-
 	@Override
 	public String getItemDetails() {
 		return String.format("""
-                        Item ID: %d
-                        Item name: %s
-                        Manufacturer: %s
-                        Manufactured in: %s
-                        Description: %s
-                        Category: %s
-                        Type: %s
-                        Sex: %s
-                        Size: %s
-                        Quantity: %d
-                        Price: %.2f
-                       """, this.getItemId(), this.getItemName(), this.getItemManufacturer(),
+                          Item ID: %d
+                          Item name: %s
+                          Manufacturer: %s
+                          Manufactured in: %s
+                          Description: %s
+                          Category: %s
+                          Type: %s
+                          Sex: %s
+                          Size: %s
+                          Quantity: %d
+                          Price: %.2f
+                         """, this.getItemId(), this.getItemName(), this.getItemManufacturer(),
 		                     this.getItemCountryOfOrigin(), this.getItemDescription(), this.getItemCategory(),
 		                     this.getClothingType().getTypeName(), this.getClothingSexCategory().getCategoryName(),
 		                     this.getClothingSize().toString()

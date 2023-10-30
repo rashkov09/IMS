@@ -14,14 +14,14 @@ public class CustomerView implements ConsoleView {
 	private static final int MAX_CHOICE = 4;
 	private static final int MIN_CHOICE = 0;
 	private static final String MENU_STRING = """
-	                                          Please, choose an option to continue:
-	                                          1. Profile
-	                                          2. Display all products                                     
-	                                          3. Order menu
-	                                          4. Search
+                                            Please, choose an option to continue:
+                                            1. Profile
+                                            2. Display all products
+                                            3. Order menu
+                                            4. Search
 	                                                                                   
-	                                          0. Logout
-	                                          """;
+                                            0. Logout
+                                            """;
 
 	@Override
 	public void showMenu(ConsoleView invoker, User user) {

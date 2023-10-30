@@ -16,7 +16,7 @@ import java.util.List;
 public class BuyOrder extends InventoryOrder implements Processable {
 
 	private ItemSupplier supplier;
-	private User employee;
+	private final User employee;
 
 	public BuyOrder(Long orderId, EmployeeUser employee, ItemSupplier supplier) {
 		super(orderId);
@@ -47,10 +47,6 @@ public class BuyOrder extends InventoryOrder implements Processable {
 		return employee;
 	}
 
-	public void setEmployee(User employee) {
-		this.employee = employee;
-	}
-
 	@Override
 	public BigDecimal getTotalOrderAmount() {
 		return this.getOrderItems()
@@ -74,16 +70,14 @@ public class BuyOrder extends InventoryOrder implements Processable {
 			.append("Order modified: ").append(this.getStampModified() != null ? this.getStampModified() : "never")
 			.append(System.lineSeparator())
 			.append("Order status: ").append(this.getOrderStatus().name()).append(System.lineSeparator());
-		this.getOrderItems().forEach(itemLine -> {
-			builder.append("Item: ").append(itemLine.getItem().displayItemDescription()).append("\t\t").append("Qty: ").append(itemLine.getQuantity())
-			       .append("\t\t")
-				.append("PRICE: ").append( itemLine.getItem().getItemPrice().multiply(PriceModifier.valueOf(itemLine.getItem().getItemCategory().name()).getPriceModifier()))
-			       .append("\t\t")
-			       .append("TOTAL: ").append(
-				       itemLine.getItem().getItemPrice().multiply(PriceModifier.valueOf(itemLine.getItem().getItemCategory().name()).getPriceModifier())
-				          .multiply(BigDecimal.valueOf(itemLine.getQuantity())))
-			       .append(System.lineSeparator());
-		});
+		this.getOrderItems().forEach(itemLine -> builder.append("Item: ").append(itemLine.getItem().displayItemDescription()).append("\t\t").append("Qty: ").append(itemLine.getQuantity())
+	                                                .append("\t\t")
+	                                                .append("PRICE: ").append( itemLine.getItem().getItemPrice().multiply(PriceModifier.valueOf(itemLine.getItem().getItemCategory().name()).getPriceModifier()))
+	                                                .append("\t\t")
+	                                                .append("TOTAL: ").append(
+			       itemLine.getItem().getItemPrice().multiply(PriceModifier.valueOf(itemLine.getItem().getItemCategory().name()).getPriceModifier())
+			          .multiply(BigDecimal.valueOf(itemLine.getQuantity())))
+	                                                .append(System.lineSeparator()));
 		builder.append("ORDER TOTAL: ").append(this.getTotalOrderAmount());
 		return builder.toString();
 	}

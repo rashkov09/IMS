@@ -7,23 +7,23 @@ import java.util.List;
 
 import static constant.Shared.ORDER_FILE_PATH;
 
-public class OrderData extends PersistenceUnit<InventoryOrder> implements Data<InventoryOrder> {
+public class OrderData implements Data<InventoryOrder> {
+
+	private static final DataPersistence<InventoryOrder> orderPersistenceUnit = new PersistenceUnit<>(ORDER_FILE_PATH);
 	private static final TypeToken<List<InventoryOrder>> typeToken = new TypeToken<>() {
 	};
-	public OrderData() {
-		super(ORDER_FILE_PATH);
-	}
 
 	@Override
 	public InventoryOrder getById(Long id) {
-		return this.fetchAll(typeToken).stream().filter(order -> order.getOrderId().equals(id)).findFirst().orElse(null);
+		return orderPersistenceUnit.fetchAll(typeToken).stream().filter(order -> order.getOrderId().equals(id)).findFirst()
+		                           .orElse(null);
 	}
 
 	@Override
 	public boolean add(InventoryOrder order) {
-		List<InventoryOrder> inventoryOrders = this.fetchAll(typeToken);
+		List<InventoryOrder> inventoryOrders = orderPersistenceUnit.fetchAll(typeToken);
 		inventoryOrders.add(order);
-		return this.save(inventoryOrders);
+		return orderPersistenceUnit.save(inventoryOrders);
 	}
 
 	@Override
@@ -33,11 +33,12 @@ public class OrderData extends PersistenceUnit<InventoryOrder> implements Data<I
 
 	@Override
 	public Long getLastId() {
-		return this.fetchAll(typeToken).stream().map(InventoryOrder::getOrderId).max(Long::compareTo).orElse(0L);
+		return orderPersistenceUnit.fetchAll(typeToken).stream().map(InventoryOrder::getOrderId).max(Long::compareTo)
+		                           .orElse(0L);
 	}
 
 	@Override
 	public List<InventoryOrder> getAll() {
-		return this.fetchAll(typeToken);
+		return orderPersistenceUnit.fetchAll(typeToken);
 	}
 }

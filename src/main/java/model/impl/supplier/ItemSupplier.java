@@ -13,7 +13,7 @@ import static constant.Shared.HORIZONTAL_LINE_BREAK;
 public class ItemSupplier {
 
 	private final List<InventoryItem> items;
-	private Long supplierId;
+	private final Long supplierId;
 	private String supplierName;
 	private String supplierEmail;
 	private String supplierPhone;
@@ -41,9 +41,6 @@ public class ItemSupplier {
 		return supplierId;
 	}
 
-	public void setSupplierId(Long supplierId) {
-		this.supplierId = supplierId;
-	}
 
 	public String getSupplierName() {
 		return supplierName;
@@ -121,7 +118,7 @@ public class ItemSupplier {
                                      Contract start date: %s
                                     Contract end date: %s
                                     Payment method: %s
-                                    Available items: 
+                                    Available items:
 		                              	
                                  """, this.getSupplierId(), this.getSupplierName(), this.getSupplierEmail(),
 		                             this.getSupplierPhone(),
@@ -142,7 +139,7 @@ public class ItemSupplier {
                        Supplier ID: %d
                        Supplier name: %s
                        Available item IDs: %s
-		                     """,this.getSupplierId(),this.getSupplierName(),itemIds));
+                         """, this.getSupplierId(), this.getSupplierName(), itemIds));
 		 return builder.toString();
 	}
 }

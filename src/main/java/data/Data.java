@@ -9,4 +9,5 @@ public interface Data<T> {
 	boolean removeById(Long id);
 	Long getLastId();
 	List<T> getAll();
+
 }

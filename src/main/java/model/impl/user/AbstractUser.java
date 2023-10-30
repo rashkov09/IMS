@@ -4,7 +4,7 @@ public abstract class AbstractUser {
 	private String name;
 	private String phone;
 	private String email;
-	private String username;
+	private final String username;
 	private String password;
 
 	public AbstractUser(String name,String phone, String email, String username, String password) {
@@ -41,10 +41,6 @@ public abstract class AbstractUser {
 
 	public String getUsername() {
 		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {

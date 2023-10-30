@@ -84,9 +84,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String displayAllUsers() {
 		StringBuilder builder = new StringBuilder();
-		userData.getAll().forEach(user -> {
-			builder.append(HORIZONTAL_LINE_BREAK).append(user.toString()).append(System.lineSeparator());
-		});
+		userData.getAll().forEach(user -> builder.append(HORIZONTAL_LINE_BREAK).append(user.toString()).append(System.lineSeparator()));
 		return builder.toString();
 	}
 
@@ -108,7 +106,7 @@ public class UserServiceImpl implements UserService {
 					if (answer.equals("y")) {
 						users.stream().filter(user -> user.getUserRole().equals(UserRole.EMPLOYEE) && user.getId().equals(id))
 						     .map(u -> (EmployeeUser) u).findFirst().ifPresent(user -> user.setAdmin(false));
-						userData.save(users);
+						userData.update(users);
 						result = String.format("ADMIN status deactivated for userId: %d", id);
 					}
 				}
@@ -118,7 +116,7 @@ public class UserServiceImpl implements UserService {
 					if (answer.equals("y")) {
 						users.stream().filter(user -> user.getUserRole().equals(UserRole.EMPLOYEE) && user.getId().equals(id))
 						     .map(u -> (EmployeeUser) u).findFirst().ifPresent(user -> user.setAdmin(true));
-						userData.save(users);
+						userData.update(users);
 						result = String.format("ADMIN status activated for userId: %d", id);
 					}
 				}
