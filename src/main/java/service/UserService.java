@@ -25,7 +25,7 @@ public interface UserService {
 
 	User getUpdatedUser(User user);
 
-	String addOrderToHistory(User user, InventoryOrder inventoryOrder);
+	void addOrderToHistory(User user, InventoryOrder inventoryOrder);
 
 	void updateOrderHistory(CustomerUser customer, long orderId);
 }

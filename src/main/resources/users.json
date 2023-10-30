@@ -129,5 +129,63 @@
     "email": "customer@abv.bg",
     "username": "customer",
     "password": "customer"
+  },
+  {
+    "isAdmin": false,
+    "id": 3,
+    "userRole": "EMPLOYEE",
+    "name": "Todor Todorov",
+    "phone": "+5266986564",
+    "email": "todor@gmail.com",
+    "username": "todor",
+    "password": "todor"
+  },
+  {
+    "orderHistory": [
+      {
+        "customer": {
+          "orderHistory": [],
+          "userCart": [],
+          "id": 4,
+          "userRole": "CUSTOMER",
+          "name": "Petar",
+          "phone": "+35965566464",
+          "email": "petar@abv.bg",
+          "username": "petar",
+          "password": "petar"
+        },
+        "orderId": 3,
+        "orderType": "SELL",
+        "paymentMethod": "CARD",
+        "orderItems": [
+          {
+            "item": {
+              "itemId": 3,
+              "itemName": "Real feel sofa",
+              "itemManufacturer": "Can Bane LTD",
+              "itemCountryOfOrigin": "Israel",
+              "itemDescription": "Living room sofa",
+              "itemCategory": "FURNITURE",
+              "itemQuantity": 2,
+              "itemPrice": 3999.99,
+              "furnitureType": "SOFAS",
+              "deliveryPrice": 100.0
+            },
+            "quantity": 1
+          }
+        ],
+        "orderStatus": "CREATED",
+        "stampCreated": "2023-10-31 01:34:26",
+        "stampModified": "2023-10-31 01:34:26"
+      }
+    ],
+    "userCart": [],
+    "id": 4,
+    "userRole": "CUSTOMER",
+    "name": "Petar",
+    "phone": "+35965566464",
+    "email": "petar@abv.bg",
+    "username": "petar",
+    "password": "petar"
   }
 ]

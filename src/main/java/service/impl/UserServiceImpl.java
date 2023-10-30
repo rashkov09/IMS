@@ -161,7 +161,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String addOrderToHistory(User user, InventoryOrder inventoryOrder) {
+	public void addOrderToHistory(User user, InventoryOrder inventoryOrder) {
 		List<User> updatedUsers = userData.getAll().stream()
 		                                  .map(currentUser -> {
 			                                  if (currentUser.getId().equals(user.getId())) {
@@ -174,7 +174,6 @@ public class UserServiceImpl implements UserService {
 		                                  })
 		                                  .toList();
 		userData.update(updatedUsers);
-		return "Order added successfully!";
 	}
 
 	@Override

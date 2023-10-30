@@ -44,6 +44,7 @@ public class SupplierView implements ConsoleView {
 			}
 			case 3 -> {
 				// TODO add edit supplier functionality
+				this.showMenu(invoker,user);
 			}
 			case 4 -> {
 				System.out.println(itemSupplierService.removeSupplier());
