@@ -1,15 +1,13 @@
 package model.impl.item;
 
 import model.enums.item.ItemCategory;
+import model.iface.Categorizable;
 import model.iface.Item;
 import model.iface.Sellable;
-import model.iface.Categorizable;
-import model.iface.Breakable;
-import model.iface.Perishable;
 
 import java.math.BigDecimal;
 
-public abstract class AbstractItem implements Item, Sellable, Categorizable, Breakable, Perishable {
+public abstract class AbstractItem implements Item, Sellable, Categorizable {
 
 	private String itemName;
 	private String itemManufacturer;
@@ -74,15 +72,6 @@ public abstract class AbstractItem implements Item, Sellable, Categorizable, Bre
 		return this.getItemDescription();
 	}
 
-	@Override
-	public Boolean isBreakable() {
-		return false;
-	}
-
-	@Override
-	public void handleBrokenItem() {
-
-	}
 
 	@Override
 	public ItemCategory getItemCategory() {
@@ -99,15 +88,6 @@ public abstract class AbstractItem implements Item, Sellable, Categorizable, Bre
 		return BigDecimal.ZERO;
 	}
 
-	@Override
-	public Boolean isPerishable() {
-		return false;
-	}
-
-	@Override
-	public void handlePerishedItem() {
-
-	}
 
 	@Override
 	public BigDecimal setItemPrice(BigDecimal price) {

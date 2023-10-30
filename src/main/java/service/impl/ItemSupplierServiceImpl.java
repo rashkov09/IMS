@@ -93,7 +93,7 @@ public class ItemSupplierServiceImpl implements ItemSupplierService {
 	public String displayAllSuppliers() {
 		StringBuilder builder = new StringBuilder();
 		supplierData.getAll().forEach(
-			supplier -> builder.append(supplier.toString()).append(System.lineSeparator()).append(HORIZONTAL_LINE_BREAK));
+			supplier -> builder.append(supplier.getSupplierDetails()).append(System.lineSeparator()).append(HORIZONTAL_LINE_BREAK));
 		return builder.toString().isEmpty() ? "No suppliers found!" : builder.toString();
 	}
 
@@ -107,7 +107,14 @@ public class ItemSupplierServiceImpl implements ItemSupplierService {
 			                                                                                                     itemId)))
 		                                                   .toList();
 		suppliersWithItem.forEach(
-			supplier -> builder.append(supplier).append(System.lineSeparator()).append(HORIZONTAL_LINE_BREAK));
+			supplier -> builder.append(supplier.getSupplierDetails()).append(System.lineSeparator()).append(HORIZONTAL_LINE_BREAK));
 		return builder.toString().isEmpty() ? "No suppliers for this item found!" : builder.toString();
+	}
+
+	@Override
+	public String displaySuppliersOrderDetails() {
+		StringBuilder builder =new StringBuilder();
+		supplierData.getAll().forEach(supplier -> builder.append(supplier.toString()).append(System.lineSeparator()));
+		return builder.toString();
 	}
 }

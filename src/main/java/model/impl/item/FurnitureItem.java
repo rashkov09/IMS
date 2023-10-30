@@ -6,7 +6,7 @@ import model.enums.item.ItemCategory;
 import java.math.BigDecimal;
 
 public class FurnitureItem extends InventoryItem{
-	private FurnitureType furnitureType;
+	private final FurnitureType furnitureType;
 	private BigDecimal deliveryPrice;
 
 	public FurnitureItem(
@@ -21,10 +21,6 @@ public class FurnitureItem extends InventoryItem{
 
 	public FurnitureType getFurnitureType() {
 		return furnitureType;
-	}
-
-	public void setFurnitureType(FurnitureType furnitureType) {
-		this.furnitureType = furnitureType;
 	}
 
 	public BigDecimal getDeliveryPrice() {

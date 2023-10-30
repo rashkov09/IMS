@@ -1,0 +1,147 @@
+[
+  {
+    "customer": {
+      "orderHistory": [],
+      "userCart": [],
+      "id": 2,
+      "userRole": "CUSTOMER",
+      "name": "Customer",
+      "phone": "34917452134",
+      "email": "customer@abv.bg",
+      "username": "customer",
+      "password": "customer"
+    },
+    "orderId": 1,
+    "orderType": "SELL",
+    "paymentMethod": "CARD",
+    "orderItems": [
+      {
+        "item": {
+          "itemId": 1,
+          "itemName": "Samsung L50",
+          "itemManufacturer": "Samsung",
+          "itemCountryOfOrigin": "China",
+          "itemDescription": "Newest smartphone",
+          "itemCategory": "ELECTRONICS",
+          "itemQuantity": 9,
+          "itemPrice": 699.99,
+          "electronicsType": "SMARTPHONE",
+          "warranty": 9
+        },
+        "quantity": 12
+      }
+    ],
+    "orderStatus": "CANCELED",
+    "stampCreated": "2023-10-31 00:59:21",
+    "stampModified": "2023-10-31 01:17:27"
+  },
+  {
+    "customer": {
+      "orderHistory": [
+        {
+          "customer": {
+            "orderHistory": [],
+            "userCart": [],
+            "id": 2,
+            "userRole": "CUSTOMER",
+            "name": "Customer",
+            "phone": "34917452134",
+            "email": "customer@abv.bg",
+            "username": "customer",
+            "password": "customer"
+          },
+          "orderId": 1,
+          "orderType": "SELL",
+          "paymentMethod": "CARD",
+          "orderItems": [
+            {
+              "item": {
+                "itemId": 1,
+                "itemName": "Samsung L50",
+                "itemManufacturer": "Samsung",
+                "itemCountryOfOrigin": "China",
+                "itemDescription": "Newest smartphone",
+                "itemCategory": "ELECTRONICS",
+                "itemQuantity": 9,
+                "itemPrice": 699.99,
+                "electronicsType": "SMARTPHONE",
+                "warranty": 9
+              },
+              "quantity": 12
+            }
+          ],
+          "orderStatus": "CANCELED",
+          "stampCreated": "2023-10-31 00:59:21",
+          "stampModified": "2023-10-31 01:17:27"
+        }
+      ],
+      "userCart": [],
+      "id": 2,
+      "userRole": "CUSTOMER",
+      "name": "Customer",
+      "phone": "34917452134",
+      "email": "customer@abv.bg",
+      "username": "customer",
+      "password": "customer"
+    },
+    "orderId": 2,
+    "orderType": "SELL",
+    "paymentMethod": "CARD",
+    "orderItems": [
+      {
+        "item": {
+          "itemId": 1,
+          "itemName": "Samsung L50",
+          "itemManufacturer": "Samsung",
+          "itemCountryOfOrigin": "China",
+          "itemDescription": "Newest smartphone",
+          "itemCategory": "ELECTRONICS",
+          "itemQuantity": 9,
+          "itemPrice": 699.99,
+          "electronicsType": "SMARTPHONE",
+          "warranty": 9
+        },
+        "quantity": 2
+      }
+    ],
+    "orderStatus": "CANCELED",
+    "stampCreated": "2023-10-31 01:22:49",
+    "stampModified": "2023-10-31 01:23:35"
+  },
+  {
+    "customer": {
+      "orderHistory": [],
+      "userCart": [],
+      "id": 4,
+      "userRole": "CUSTOMER",
+      "name": "Petar",
+      "phone": "+35965566464",
+      "email": "petar@abv.bg",
+      "username": "petar",
+      "password": "petar"
+    },
+    "orderId": 3,
+    "orderType": "SELL",
+    "paymentMethod": "CARD",
+    "orderItems": [
+      {
+        "item": {
+          "itemId": 3,
+          "itemName": "Real feel sofa",
+          "itemManufacturer": "Can Bane LTD",
+          "itemCountryOfOrigin": "Israel",
+          "itemDescription": "Living room sofa",
+          "itemCategory": "FURNITURE",
+          "itemQuantity": 2,
+          "itemPrice": 3999.99,
+          "furnitureType": "SOFAS",
+          "deliveryPrice": 100.0
+        },
+        "quantity": 1
+      }
+    ],
+    "orderStatus": "CREATED",
+    "stampCreated": "2023-10-31 01:34:26",
+    "stampModified": "2023-10-31 01:34:26"
+  }
+]

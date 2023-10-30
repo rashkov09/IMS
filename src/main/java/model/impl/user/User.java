@@ -5,7 +5,7 @@ import model.enums.user.UserRole;
 public class User extends AbstractUser{
 	private Long id;
 
-	private UserRole userRole;
+	private final UserRole userRole;
 
 	public User(String name, String phone, String email, String username, String password, Long id, UserRole userRole) {
 		super(name, phone, email, username, password);
@@ -25,9 +25,6 @@ public class User extends AbstractUser{
 		return userRole;
 	}
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
-	}
 
 	@Override
 	public String toString() {
@@ -45,6 +42,6 @@ public class User extends AbstractUser{
                        Phone: %s
                        Email: %s
                        Username: %s
-		                     """,this.getId(),this.getName(),this.getPhone(),this.getEmail(),this.getUsername());
+                         """, this.getId(), this.getName(), this.getPhone(), this.getEmail(), this.getUsername());
 	}
 }

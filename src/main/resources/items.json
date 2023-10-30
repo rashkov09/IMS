@@ -22,5 +22,17 @@
     "itemDescription": "Vafla",
     "itemCategory": "FOOD_GROCERIES",
     "itemPrice": 2.39
+  },
+  {
+    "furnitureType": "SOFAS",
+    "deliveryPrice": 100,
+    "itemId": 3,
+    "itemQuantity": 2,
+    "itemName": "Real feel sofa",
+    "itemManufacturer": "Can Bane LTD",
+    "itemCountryOfOrigin": "Israel",
+    "itemDescription": "Living room sofa",
+    "itemCategory": "FURNITURE",
+    "itemPrice": 3999.99
   }
 ]

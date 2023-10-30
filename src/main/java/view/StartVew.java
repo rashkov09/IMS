@@ -32,7 +32,9 @@ public class StartVew implements ConsoleView {
 				if (loggedUser != null) {
 					forwardUserView(loggedUser);
 				}
+				this.showMenu(null,null);
 			}
+
 			case 2 -> {
 				User registerUser = userService.registerUser();
 				if (registerUser != null) {

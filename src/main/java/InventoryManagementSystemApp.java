@@ -1,4 +1,3 @@
-import view.EmployeeView;
 import view.StartVew;
 
 public class InventoryManagementSystemApp {

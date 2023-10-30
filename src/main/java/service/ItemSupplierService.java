@@ -1,6 +1,5 @@
 package service;
 
-import model.impl.item.InventoryItem;
 import model.impl.supplier.ItemSupplier;
 
 public interface ItemSupplierService {
@@ -18,4 +17,6 @@ public interface ItemSupplierService {
 	String displayAllSuppliers();
 
 	String findByItemId(long itemId);
+
+	String displaySuppliersOrderDetails();
 }

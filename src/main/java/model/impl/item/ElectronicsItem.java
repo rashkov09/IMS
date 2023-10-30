@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class ElectronicsItem extends InventoryItem {
 
-	private ElectronicsType electronicsType;
+	private final ElectronicsType electronicsType;
 	private LocalDate dateOfPurchase;
 	private Integer warranty;
 
@@ -27,10 +27,6 @@ public class ElectronicsItem extends InventoryItem {
 		return electronicsType;
 	}
 
-	public void setElectronicsType(ElectronicsType electronicsType) {
-		this.electronicsType = electronicsType;
-	}
-
 	public LocalDate getDateOfPurchase() {
 		return dateOfPurchase;
 	}
@@ -47,16 +43,6 @@ public class ElectronicsItem extends InventoryItem {
 		this.warranty = warranty;
 	}
 
-	@Override
-	public Boolean isBreakable() {
-		return true;
-	}
-
-	@Override
-	public void handleBrokenItem() {
-		LocalDate to = this.dateOfPurchase.plusYears(warranty);
-		System.out.println("Warranty is valid to: " + to);
-	}
 
 	@Override
 	public String getItemDetails() {
