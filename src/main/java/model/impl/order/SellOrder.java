@@ -4,36 +4,34 @@ import model.enums.order.OrderStatus;
 import model.enums.order.OrderType;
 import model.enums.payment.PaymentMethod;
 import model.iface.Processable;
-import model.impl.user.CustomerUser;
-import model.impl.user.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class SellOrder extends InventoryOrder implements Processable {
-	private User customer;
+	private Long customerId;
 
-	public SellOrder(Long orderId,CustomerUser customer) {
+	public SellOrder(Long orderId,Long customerId) {
 		super(orderId);
 		this.setOrderType(OrderType.SELL);
-		this.customer = customer;
+		this.customerId = customerId;
 	}
 
 	public SellOrder(
 		List<OrderItemLine> orderItems, OrderStatus orderStatus,
 		LocalDateTime stampCreated, LocalDateTime stampModified, Long orderId, OrderType orderType,
-		PaymentMethod paymentMethod, User customer) {
+		PaymentMethod paymentMethod, Long customerId) {
 		super(orderItems, orderStatus, stampCreated, stampModified, orderId, orderType, paymentMethod);
-		this.customer = customer;
+		this.customerId = customerId;
 	}
 
-	public User getCustomer() {
-		return customer;
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer(User customer) {
-		this.customer = customer;
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	@Override
@@ -41,7 +39,7 @@ public class SellOrder extends InventoryOrder implements Processable {
 		StringBuilder builder = new StringBuilder();
 		builder
 			.append("Order ID :").append(this.getOrderId()).append(System.lineSeparator())
-			.append("Customer ID: ").append(this.getCustomer().getId()).append(System.lineSeparator())
+			.append("Customer ID: ").append(this.getCustomerId()).append(System.lineSeparator())
 			.append("Order created: ").append(this.getStampCreated())
 			.append("\t\t")
 			.append("Order modified: ").append(this.getStampModified())

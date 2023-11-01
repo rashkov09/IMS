@@ -6,8 +6,6 @@ import model.enums.order.PriceModifier;
 import model.enums.payment.PaymentMethod;
 import model.iface.Processable;
 import model.impl.supplier.ItemSupplier;
-import model.impl.user.EmployeeUser;
-import model.impl.user.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,22 +14,22 @@ import java.util.List;
 public class BuyOrder extends InventoryOrder implements Processable {
 
 	private ItemSupplier supplier;
-	private final User employee;
+	private final Long employeeId;
 
-	public BuyOrder(Long orderId, EmployeeUser employee, ItemSupplier supplier) {
+	public BuyOrder(Long orderId, Long employeeId, ItemSupplier supplier) {
 		super(orderId);
 		this.setOrderType(OrderType.BUY);
-		this.employee = employee;
+		this.employeeId = employeeId;
 		setSupplier(supplier);
 	}
 
 	public BuyOrder(
 		List<OrderItemLine> orderItems, OrderStatus orderStatus,
 		LocalDateTime stampCreated, LocalDateTime stampModified, Long orderId, OrderType orderType,
-		PaymentMethod paymentMethod, ItemSupplier supplier, User employee) {
+		PaymentMethod paymentMethod, ItemSupplier supplier, Long employeeId) {
 		super(orderItems, orderStatus, stampCreated, stampModified, orderId, orderType, paymentMethod);
 		this.supplier = supplier;
-		this.employee = employee;
+		this.employeeId = employeeId;
 	}
 
 	public ItemSupplier getSupplier() {
@@ -43,8 +41,8 @@ public class BuyOrder extends InventoryOrder implements Processable {
 		super.setPaymentMethod(supplier.getPaymentMethod());
 	}
 
-	public User getEmployee() {
-		return employee;
+	public Long getEmployeeId() {
+		return employeeId;
 	}
 
 	@Override
@@ -64,7 +62,7 @@ public class BuyOrder extends InventoryOrder implements Processable {
 		builder
 			.append("Order ID :").append(this.getOrderId()).append(System.lineSeparator())
 			.append("Supplier: ").append(this.getSupplier().getSupplierName()).append(System.lineSeparator())
-			.append("Employee: ").append(this.getEmployee().getUsername()).append(System.lineSeparator())
+			.append("Employee: ").append(this.getEmployeeId()).append(System.lineSeparator())
 			.append("Order created: ").append(this.getStampCreated())
 			.append("\t\t")
 			.append("Order modified: ").append(this.getStampModified() != null ? this.getStampModified() : "never")
