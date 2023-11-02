@@ -10,7 +10,6 @@ import model.impl.order.OrderItemLine;
 import model.impl.order.SellOrder;
 import model.impl.supplier.ItemSupplier;
 import model.impl.user.CustomerUser;
-import model.impl.user.EmployeeUser;
 import model.impl.user.User;
 import service.ItemSupplierService;
 import service.OrderService;
@@ -33,7 +32,7 @@ public class OrderServiceImpl implements OrderService {
 		switch (user.getUserRole()) {
 			case EMPLOYEE -> {
 				ItemSupplier itemSupplier = getItemSupplier();
-				BuyOrder inventoryOrder = new BuyOrder(orderId, (EmployeeUser) user, itemSupplier);
+				BuyOrder inventoryOrder = new BuyOrder(orderId, user.getId(), itemSupplier);
 				String choice = "y";
 				while (!choice.equalsIgnoreCase("n")) {
 					addItemToOrder(itemSupplier, inventoryOrder);
@@ -52,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
 					System.out.println("No items in cart!");
 					return null;
 				}
-				InventoryOrder inventoryOrder = new SellOrder(orderId, (CustomerUser) user);
+				InventoryOrder inventoryOrder = new SellOrder(orderId, customer.getId());
 				inventoryOrder.setOrderItems(customer.getUserCart());
 				customer.setUserCart(new ArrayList<>());
 				System.out.println("Please, choose payment method:");

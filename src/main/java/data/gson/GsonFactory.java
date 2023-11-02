@@ -11,6 +11,7 @@ import data.gson.item.ItemSerializer;
 import data.gson.order.OrderDeserializer;
 import data.gson.order.OrderSerializer;
 import data.gson.user.UserDeserializer;
+import data.gson.user.UserSerializer;
 import model.impl.item.InventoryItem;
 import model.impl.order.InventoryOrder;
 import model.impl.user.User;
@@ -31,6 +32,7 @@ public final class GsonFactory {
 		// gsonBuilder.registerTypeAdapter(InventoryOrder.class, new OrderSerializer());
 		gsonBuilder.registerTypeAdapter(InventoryOrder.class, new OrderDeserializer());
 		gsonBuilder.registerTypeAdapter(User.class, new UserDeserializer());
+		gsonBuilder.registerTypeAdapter(User.class, new UserSerializer());
 		gsonBuilder.setPrettyPrinting();
 
 

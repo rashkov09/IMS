@@ -46,13 +46,13 @@ public class OrderDeserializer implements JsonDeserializer<InventoryOrder> {
 		switch (orderType) {
 			case BUY -> {
 				ItemSupplier itemSupplier = context.deserialize(jsonObject.get("supplier"), ItemSupplier.class);
-				User user = context.deserialize(jsonObject.get("employee"), EmployeeUser.class);
+				Long userId = jsonObject.get("employeeId").getAsLong();
 				return new BuyOrder(items, orderStatus, stampCreated, stampModified, orderId, orderType, paymentMethod,
-				                    itemSupplier, user);
+				                    itemSupplier, userId);
 			}
 			case SELL -> {
-				User user = context.deserialize(jsonObject.get("customer"), CustomerUser.class);
-				return new SellOrder(items,orderStatus,stampCreated,stampModified,orderId,orderType,paymentMethod,user);
+				Long customerId = jsonObject.get("customerId").getAsLong();
+				return new SellOrder(items,orderStatus,stampCreated,stampModified,orderId,orderType,paymentMethod,customerId);
 			}
 			default -> throw new JsonParseException("Error");
 		}
